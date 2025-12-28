@@ -1,5 +1,7 @@
 <nav class="navigation">
+  {{ $currentPage := . }}
   {{ range .Site.Menus.main }}
-    <a class="page-link" href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{ $isActive := or (eq $currentPage.RelPermalink .URL) (eq $currentPage.RelPermalink (printf "%s/" .URL)) }}
+    <a class="page-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
   {{ end }}
 </nav>

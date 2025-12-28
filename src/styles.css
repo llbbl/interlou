@@ -72,13 +72,25 @@
   /* ============================================
      SITE HEADER
      ============================================ */
+  .site-branding {
+    @apply flex items-center gap-6 mb-4;
+  }
+
   .site-header h1,
   body > header h1 {
-    @apply text-site-title uppercase font-extrabold pb-0;
+    @apply text-site-title uppercase font-extrabold pb-0 mb-0;
+  }
+
+  .site-image-link {
+    @apply flex-shrink-0 rounded-full transition-shadow duration-300;
+  }
+
+  .site-image-link:hover {
+    box-shadow: 0 0 0 4px var(--accent), 0 0 20px var(--accent);
   }
 
   img.site-image {
-    @apply rounded-full w-24 mb-10;
+    @apply rounded-full w-20 mb-0 block;
   }
 
   .site-title {
@@ -100,6 +112,10 @@
   .navigation a.page-link:hover,
   a.date:hover {
     @apply text-accent underline opacity-100;
+  }
+
+  .navigation a.page-link.is-active {
+    @apply text-accent opacity-100;
   }
 
   /* ============================================
@@ -352,8 +368,12 @@
     @apply px-4;
   }
 
+  .site-branding {
+    @apply gap-4 mb-3;
+  }
+
   img.site-image {
-    @apply w-20 mb-8;
+    @apply w-14;
   }
 
   .page-content {
