@@ -1,8 +1,6 @@
 # Interlou
 
-A simple, bold theme for [Micro.blog](https://micro.blog). An interlude for your thoughts.
-
-![Interlou theme](screenshot.png)
+A theme for [Micro.blog](https://micro.blog). An interlude for your thoughts.
 
 ## Installation
 
