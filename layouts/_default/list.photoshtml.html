@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="photos">
+  {{ $list := (where .Site.Pages "Type" "post") }}
+  <ul class="post-list">
+    {{ range $list }}
+    <li class="h-entry">
+      {{ partial "post.html" . }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}
