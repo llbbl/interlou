@@ -1,6 +1,7 @@
 {{ define "main" }}
 <div class="replies">
-  {{ $paginator := .Paginate .Pages }}
+  {{ $replies := where .Site.RegularPages "Type" "reply" }}
+  {{ $paginator := .Paginate $replies }}
   <ul class="replies-list">
     {{ range $paginator.Pages }}
     <li class="reply-item h-entry">

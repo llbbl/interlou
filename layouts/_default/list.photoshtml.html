@@ -1,13 +1,14 @@
 {{ define "main" }}
 <div class="photos-grid">
-  {{ range .Pages }}
-    <a href="{{ .Permalink }}" class="photo-item">
-      {{ $img := findRE `<img[^>]+src="([^"]+)"` .Content 1 }}
-      {{ with index $img 0 }}
-        {{ $src := replaceRE `.*src="([^"]+)".*` "$1" . }}
-        <img src="{{ $src }}" alt="" loading="lazy">
-      {{ end }}
-    </a>
+  {{ $posts := where .Site.RegularPages "Type" "post" }}
+  {{ range $posts }}
+    {{ $img := findRE `<img[^>]+src="([^"]+)"` .Content 1 }}
+    {{ with index $img 0 }}
+      {{ $src := replaceRE `.*src="([^"]+)".*` "$1" . }}
+      <a href="{{ $.Permalink }}" class="photo-item">
+        <img src="https://micro.blog/photos/480x/{{ $src }}" alt="" loading="lazy">
+      </a>
+    {{ end }}
   {{ end }}
 </div>
 {{ end }}
