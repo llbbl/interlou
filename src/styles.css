@@ -295,20 +295,65 @@
   /* ============================================
      ARCHIVE
      ============================================ */
-  .archive_categories {
-    @apply border-b-0;
+  .archive-list {
+    @apply list-none ml-0;
   }
 
-  .archive_categories p {
-    @apply inline mr-3.5;
+  .archive-list li {
+    @apply mb-2;
   }
 
-  .archive_categories p a {
+  .archive-date {
+    @apply font-mono text-lg text-text opacity-40;
+  }
+
+  .archive-separator {
     @apply text-text opacity-40;
   }
 
-  .archive_categories p a:hover {
-    @apply text-accent opacity-100 underline;
+  .archive-list a {
+    @apply text-text no-underline;
+  }
+
+  .archive-list a:hover {
+    @apply text-accent underline;
+  }
+
+  /* ============================================
+     PHOTOS GRID
+     ============================================ */
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .photo-item {
+    @apply block overflow-hidden rounded-lg;
+    aspect-ratio: 1;
+  }
+
+  .photo-item img {
+    @apply w-full h-full object-cover transition-transform duration-300;
+  }
+
+  .photo-item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* ============================================
+     REPLIES LIST
+     ============================================ */
+  .replies-list {
+    @apply list-none ml-0;
+  }
+
+  .reply-item {
+    @apply mb-12 pb-12 border-b border-accent/20;
+  }
+
+  .reply-item:last-child {
+    @apply border-b-0 mb-0 pb-0;
   }
 
   /* ============================================

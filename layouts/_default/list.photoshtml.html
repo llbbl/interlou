@@ -1,12 +1,24 @@
 {{ define "main" }}
-<div class="photos">
-  {{ $list := (where .Site.Pages "Type" "post") }}
-  <ul class="post-list">
-    {{ range $list }}
-    <li class="h-entry">
-      {{ partial "post.html" . }}
-    </li>
+<div class="photos-grid">
+  {{ $photos := where .Site.RegularPages "Section" "photos" }}
+  {{ range $photos }}
+    {{ $images := .Resources.ByType "image" }}
+    {{ if $images }}
+      {{ range $images }}
+      <a href="{{ .RelPermalink }}" class="photo-item" target="_blank">
+        <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy">
+      </a>
+      {{ end }}
+    {{ else }}
+      {{/* Fallback: extract images from content */}}
+      {{ $content := .Content }}
+      {{ range findRE `<img[^>]+src="([^"]+)"` $content }}
+        {{ $src := replaceRE `.*src="([^"]+)".*` "$1" . }}
+        <a href="{{ $src }}" class="photo-item" target="_blank">
+          <img src="{{ $src }}" alt="{{ $.Title }}" loading="lazy">
+        </a>
+      {{ end }}
     {{ end }}
-  </ul>
+  {{ end }}
 </div>
 {{ end }}

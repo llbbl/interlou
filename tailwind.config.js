@@ -33,7 +33,7 @@ export default {
         'heading-3': ['1.125rem', { lineHeight: '1', letterSpacing: '2px', fontWeight: '700' }],
         'body': ['1.125rem', { lineHeight: '1.5' }],
         'blockquote': ['1.75rem', { lineHeight: '1.5' }],
-        'code': ['1.5rem', { lineHeight: '1.5' }]
+        'code': ['1rem', { lineHeight: '1.5' }]
       },
       spacing: {
         'content-gap': '120px',
