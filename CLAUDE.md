@@ -45,3 +45,7 @@ pnpm dev
 2. Run `pnpm build`
 3. Commit the built CSS (`static/css/styles.css`)
 4. Push to GitHub - Micro.blog auto-pulls updates
+
+## Git Policy
+
+**Do not run `git add` or `git commit` automatically.** Let the user review changes before committing.
