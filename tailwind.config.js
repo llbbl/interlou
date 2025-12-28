@@ -40,7 +40,7 @@ export default {
         'content-gap-mobile': '60px'
       },
       maxWidth: {
-        'content': '900px'
+        'content': '1100px'
       }
     }
   },
