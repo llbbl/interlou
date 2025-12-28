@@ -1,9 +1,6 @@
 {{ define "main" }}
 <ul class="post-list">
-  {{ $posts := where .Site.RegularPages "Section" "!=" "replies" }}
-  {{ $posts = where $posts "Section" "!=" "newsletter" }}
-  {{ $posts = where $posts "Section" "!=" "categories" }}
-  {{ $posts = where $posts "Section" "!=" "photos" }}
+  {{ $posts := where .Site.RegularPages "Type" "post" }}
   {{ $paginator := .Paginate $posts }}
   {{ range $paginator.Pages }}
   <li class="h-entry">
