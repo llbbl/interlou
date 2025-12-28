@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="h-entry post">
+  {{ partial "post.html" . }}
+</article>
+
+{{ if .Site.Params.conversation }}
+<div class="microblog_conversation">
+  {{ partial "conversation.html" . }}
+</div>
+{{ end }}
+{{ end }}

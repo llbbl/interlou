@@ -1,0 +1,393 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   INTERLOU THEME
+   A Micro.blog theme by Logan Lindquist
+   ============================================ */
+
+@layer base {
+  :root {
+    --background: #371554;
+    --background-alt: #451d67;
+    --text: #eeeeee;
+    --text-alt: #cda0f4;
+    --accent: rgb(217, 70, 239);
+    --accent-alt: #490123;
+  }
+
+  /* Reset */
+  body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure {
+    @apply m-0 p-0;
+  }
+
+  body {
+    @apply font-sans text-body text-text bg-background;
+    margin: 120px auto;
+    padding: 0 32px;
+  }
+
+  /* Links */
+  a {
+    @apply text-text transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-accent;
+  }
+
+  /* Images */
+  img {
+    @apply w-full h-auto align-middle;
+  }
+
+  .e-content img {
+    margin: 14px 0 44px 0;
+    @apply rounded;
+  }
+
+  /* Lists */
+  ul, ol {
+    @apply ml-10;
+  }
+
+  li > ul, li > ol {
+    @apply mb-0;
+  }
+
+  ul li:last-of-type {
+    @apply mb-6;
+  }
+}
+
+@layer components {
+  /* ============================================
+     WRAPPER
+     ============================================ */
+  .wrapper {
+    @apply max-w-content mx-auto px-8;
+  }
+
+  /* ============================================
+     SITE HEADER
+     ============================================ */
+  .site-header h1,
+  body > header h1 {
+    @apply text-site-title uppercase font-extrabold pb-0;
+  }
+
+  img.site-image {
+    @apply rounded-full w-24 mb-10;
+  }
+
+  .site-title {
+    @apply text-6xl tracking-tight m-0 text-text no-underline;
+  }
+
+  .navigation {
+    @apply leading-none;
+  }
+
+  .navigation a.page-link,
+  .date,
+  a.date,
+  footer p,
+  footer p a {
+    @apply font-mono text-lg uppercase font-bold tracking-wide text-text opacity-40 mr-3.5 no-underline;
+  }
+
+  .navigation a.page-link:hover,
+  a.date:hover {
+    @apply text-accent underline opacity-100;
+  }
+
+  /* ============================================
+     HEADINGS
+     ============================================ */
+  h1 {
+    @apply mb-8;
+  }
+
+  h1, h1 a, h1 a:visited {
+    @apply text-heading-1 text-text no-underline;
+  }
+
+  .h-entry h1 a {
+    @apply text-text no-underline;
+  }
+
+  .h-entry h1 a:hover {
+    @apply underline;
+  }
+
+  h2, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight {
+    @apply mb-6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+
+  h3 {
+    @apply text-heading-3 uppercase text-accent mb-7 inline-block;
+  }
+
+  .seperator {
+    @apply text-accent;
+    margin: 0 4px 0 -8px;
+  }
+
+  /* ============================================
+     CONTENT
+     ============================================ */
+  .e-content p a,
+  .e-content p a:visited {
+    @apply text-text underline;
+  }
+
+  .e-content p a:hover,
+  .h-entry a:hover {
+    @apply text-accent;
+  }
+
+  h3 a {
+    @apply text-accent no-underline;
+  }
+
+  h3 a:hover {
+    @apply underline;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply text-blockquote pl-9 text-text my-8 border-l-8 border-accent;
+  }
+
+  blockquote > :last-child {
+    @apply mb-0;
+  }
+
+  /* Code */
+  pre, code {
+    @apply text-code rounded text-text;
+    background: var(--accent-alt);
+  }
+
+  article pre {
+    background-color: rgb(162, 28, 175);
+  }
+
+  article code {
+    background-color: rgb(162, 28, 175);
+    color: rgb(245, 208, 254);
+  }
+
+  code {
+    @apply px-2 py-1;
+  }
+
+  pre {
+    @apply px-8 py-6 my-9 overflow-x-auto;
+  }
+
+  pre > code {
+    @apply border-0 p-0;
+  }
+
+  /* ============================================
+     PAGE CONTENT
+     ============================================ */
+  .page-content {
+    padding: 110px 0 120px 0;
+  }
+
+  .page-content ul {
+    @apply mb-0;
+  }
+
+  .post-list {
+    @apply ml-0 list-none;
+  }
+
+  .post-list > li {
+    margin-bottom: 120px;
+  }
+
+  li.h-entry:last-of-type {
+    @apply mb-0;
+  }
+
+  .post-link {
+    @apply block text-2xl;
+  }
+
+  .post p.date {
+    @apply mb-0;
+  }
+
+  /* ============================================
+     PAGINATION
+     ============================================ */
+  #post-nav {
+    padding-top: 120px;
+  }
+
+  #post-nav .prev {
+    @apply pr-4;
+  }
+
+  #post-nav .prev a,
+  #post-nav .next a {
+    @apply no-underline px-6 py-3 rounded-lg;
+    color: var(--background);
+    background: var(--accent);
+  }
+
+  #post-nav .prev a:hover,
+  #post-nav .next a:hover {
+    background: var(--text);
+  }
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+  .site-footer {
+    @apply p-0;
+  }
+
+  .site-footer .copy {
+    @apply text-3xl;
+  }
+
+  footer p {
+    @apply m-0;
+  }
+
+  /* ============================================
+     MEDIA
+     ============================================ */
+  video {
+    @apply max-w-full;
+  }
+
+  iframe {
+    @apply w-full max-w-full overflow-hidden my-5;
+    min-height: 510px;
+  }
+
+  /* ============================================
+     ARCHIVE
+     ============================================ */
+  .archive_categories {
+    @apply border-b-0;
+  }
+
+  .archive_categories p {
+    @apply inline mr-3.5;
+  }
+
+  .archive_categories p a {
+    @apply text-text opacity-40;
+  }
+
+  .archive_categories p a:hover {
+    @apply text-accent opacity-100 underline;
+  }
+
+  /* ============================================
+     CONVERSATIONS (Micro.blog replies)
+     ============================================ */
+  .microblog_conversation {
+    @apply mt-16;
+  }
+
+  .microblog_conversation .microblog_post {
+    @apply mb-8 p-10 rounded-lg;
+    background: #00000050;
+  }
+
+  .microblog_conversation .microblog_post:last-of-type {
+    @apply mb-0;
+  }
+
+  .microblog_user {
+    @apply text-lg font-bold uppercase tracking-wider text-accent mb-6 flex items-center;
+  }
+
+  .microblog_avatar {
+    @apply hidden;
+  }
+
+  .microblog_text p,
+  .microblog_text p a {
+    @apply text-3xl leading-relaxed text-text mb-6;
+  }
+
+  .microblog_text p a:hover {
+    @apply text-accent underline;
+  }
+
+  .microblog_time a {
+    @apply text-text opacity-40 text-lg font-bold uppercase tracking-wide no-underline font-mono;
+  }
+
+  .microblog_time a:hover {
+    @apply text-text opacity-100 underline;
+  }
+}
+
+/* ============================================
+   MOBILE STYLES
+   ============================================ */
+@media screen and (max-width: 800px) {
+  body {
+    @apply text-xl;
+    margin: 60px auto;
+    padding: 0 12px;
+  }
+
+  .wrapper {
+    max-width: calc(800px - 30px);
+    @apply px-4;
+  }
+
+  img.site-image {
+    @apply w-20 mb-8;
+  }
+
+  .page-content {
+    @apply py-16;
+  }
+
+  h1, h1 a, h1 a:visited {
+    @apply text-4xl;
+  }
+
+  h3,
+  .navigation .page-link,
+  .date,
+  a.date,
+  footer p,
+  footer p a,
+  .microblog_user,
+  .microblog_time a {
+    @apply text-sm;
+  }
+
+  .site-footer .copy,
+  blockquote,
+  .microblog_text p,
+  .microblog_text p a,
+  code {
+    @apply text-xl;
+  }
+
+  #post-nav {
+    @apply pt-16 flex;
+  }
+
+  .post-list > li {
+    @apply mb-16;
+  }
+}

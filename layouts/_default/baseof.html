@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Rubik:wght@400;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}">
+  
+  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+  
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      {{ with .Site.Params.site_image }}
+        <a href="{{ "/" | relURL }}"><img class="site-image" src="{{ . }}" alt="{{ $.Site.Title }}"></a>
+      {{ end }}
+      <h1><a class="site-title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>
+      {{ partial "navigation.html" . }}
+    </header>
+
+    <main class="page-content">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer class="site-footer">
+      {{ with .Site.Params.footer }}
+        <p>{{ . | safeHTML }}</p>
+      {{ end }}
+    </footer>
+  </div>
+
+  {{ template "_internal/google_analytics.html" . }}
+</body>
+</html>

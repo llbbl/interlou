@@ -1,0 +1,12 @@
+{{ define "main" }}
+<ul class="post-list">
+  {{ $paginator := .Paginate (where .Site.RegularPages "Section" "!=" "") }}
+  {{ range $paginator.Pages }}
+  <li class="h-entry">
+    {{ partial "post.html" . }}
+  </li>
+  {{ end }}
+</ul>
+
+{{ partial "pagination.html" . }}
+{{ end }}

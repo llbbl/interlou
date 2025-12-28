@@ -1,0 +1,21 @@
+{{ if .Title }}
+  <h1><a class="u-url p-name" href="{{ .Permalink }}">{{ .Title }}</a></h1>
+{{ end }}
+
+<div class="e-content">
+  {{ .Content }}
+</div>
+
+<p class="date">
+  <a class="u-url" href="{{ .Permalink }}">
+    <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+      {{ .Date.Format "Jan 2, 2006" }}
+    </time>
+  </a>
+  {{ with .Params.categories }}
+    {{ range . }}
+      <span class="seperator">/</span>
+      <a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+    {{ end }}
+  {{ end }}
+</p>

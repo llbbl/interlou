@@ -1,0 +1,10 @@
+name = "Interlou"
+license = "MIT"
+licenselink = "https://github.com/llbbl/interlou/blob/main/LICENSE"
+description = "A theme for Micro.blog. An interlude for your thoughts."
+homepage = "https://github.com/llbbl/interlou"
+min_version = "0.91"
+
+[author]
+  name = "Logan Lindquist Land"
+  homepage = "https://llbbl.blog"

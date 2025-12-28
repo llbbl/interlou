@@ -1,0 +1,14 @@
+{{ if .Paginator }}
+<nav id="post-nav">
+  {{ if .Paginator.HasPrev }}
+  <span class="prev">
+    <a href="{{ .Paginator.Prev.URL }}">← Newer</a>
+  </span>
+  {{ end }}
+  {{ if .Paginator.HasNext }}
+  <span class="next">
+    <a href="{{ .Paginator.Next.URL }}">Older →</a>
+  </span>
+  {{ end }}
+</nav>
+{{ end }}

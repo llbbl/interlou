@@ -1,0 +1,17 @@
+{
+  "name": "interlou",
+  "version": "1.0.0",
+  "description": "A Micro.blog theme - interlude for your thoughts",
+  "author": "Logan Lindquist Land",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "tailwindcss -i src/styles.css -o static/css/styles.css --watch",
+    "build": "tailwindcss -i src/styles.css -o static/css/styles.css --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
+  }
+}
