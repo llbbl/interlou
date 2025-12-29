@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="replies">
   {{ $replies := where .Site.RegularPages "Type" "reply" }}
-  {{ $paginator := .Paginate $replies }}
+  {{ $paginator := .Paginate $replies 10 }}
   <ul class="replies-list">
     {{ range $paginator.Pages }}
     <li class="reply-item h-entry">
@@ -19,6 +19,17 @@
     {{ end }}
   </ul>
 
-  {{ partial "pagination.html" . }}
+  <nav id="post-nav">
+    {{ if $paginator.HasPrev }}
+    <span class="prev">
+      <a href="{{ $paginator.Prev.URL }}">← Newer</a>
+    </span>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+    <span class="next">
+      <a href="{{ $paginator.Next.URL }}">Older →</a>
+    </span>
+    {{ end }}
+  </nav>
 </div>
 {{ end }}
