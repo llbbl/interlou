@@ -1,7 +1,6 @@
 {{ define "main" }}
 <div class="replies">
-  {{ $replies := where .Data.Pages.ByDate.Reverse "Type" "reply" }}
-  {{ $paginator := .Paginate $replies }}
+  {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "reply") }}
   <ul class="replies-list">
     {{ range $paginator.Pages }}
     <li class="reply-item h-entry">
