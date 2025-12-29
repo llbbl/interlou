@@ -19,6 +19,17 @@
     {{ end }}
   </ul>
 
-  {{ partial "pagination.html" . }}
+  <nav id="post-nav">
+    {{ if $paginator.HasPrev }}
+    <span class="prev">
+      <a href="{{ $paginator.Prev.URL }}">← Newer</a>
+    </span>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+    <span class="next">
+      <a href="{{ $paginator.Next.URL }}">Older →</a>
+    </span>
+    {{ end }}
+  </nav>
 </div>
 {{ end }}
