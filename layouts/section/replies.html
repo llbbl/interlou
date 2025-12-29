@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="replies">
-  {{ $replies := where .Site.RegularPages "Type" "reply" }}
+  {{ $replies := where .Data.Pages.ByDate.Reverse "Type" "reply" }}
   {{ $paginator := .Paginate $replies }}
   <ul class="replies-list">
     {{ range $paginator.Pages }}
@@ -14,10 +14,6 @@
             {{ .Date.Format "Jan 2, 2006" }}
           </time>
         </a>
-        {{ with .Params.reply_to }}
-        <span class="seperator">/</span>
-        <a href="{{ . }}" class="conversation-link">Conversation</a>
-        {{ end }}
       </p>
     </li>
     {{ end }}
