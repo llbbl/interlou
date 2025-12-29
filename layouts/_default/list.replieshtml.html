@@ -14,6 +14,10 @@
             {{ .Date.Format "Jan 2, 2006" }}
           </time>
         </a>
+        {{ with .Params.reply_to }}
+        <span class="seperator">/</span>
+        <a href="{{ . }}" class="conversation-link">Conversation</a>
+        {{ end }}
       </p>
     </li>
     {{ end }}
