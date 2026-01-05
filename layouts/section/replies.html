@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="replies">
-  {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "reply") }}
+  {{ $paginator := .Paginate .Pages 20 }}
   <ul class="replies-list">
     {{ range $paginator.Pages }}
     <li class="reply-item h-entry">
@@ -13,6 +13,9 @@
             {{ .Date.Format "Jan 2, 2006" }}
           </time>
         </a>
+        {{ with .Params.reply_to_url }}
+        · <a href="{{ . }}" class="no-underline px-3 py-1 rounded-md text-sm bg-accent text-background opacity-100 transition-all duration-200 hover:bg-text hover:-translate-y-0.5">View conversation</a>
+        {{ end }}
       </p>
     </li>
     {{ end }}

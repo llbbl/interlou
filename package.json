@@ -6,12 +6,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "tailwindcss -i src/styles.css -o static/css/styles.css --watch",
-    "build": "tailwindcss -i src/styles.css -o static/css/styles.css --minify"
+    "dev": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --watch",
+    "build": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --minify"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4"
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
   }
 }
