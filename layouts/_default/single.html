@@ -3,9 +3,8 @@
   {{ partial "post.html" . }}
 </article>
 
-{{ if .Site.Params.conversation }}
-<div class="microblog_conversation">
-  {{ partial "conversation.html" . }}
-</div>
+{{ if .Site.Params.include_conversation }}
+<div id="conversation" class="microblog_conversation"></div>
+<script src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
 {{ end }}
 {{ end }}

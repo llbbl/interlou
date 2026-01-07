@@ -368,6 +368,44 @@
   }
 
   /* ============================================
+     PHOTO MODAL
+     ============================================ */
+  .photo-modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .photo-modal:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .photo-modal-overlay {
+    @apply absolute inset-0;
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  .photo-modal-content {
+    @apply relative z-10 max-w-5xl max-h-[90vh] mx-4;
+  }
+
+  .photo-modal-content img {
+    @apply max-w-full max-h-[85vh] rounded-lg object-contain;
+    width: auto;
+    height: auto;
+  }
+
+  .photo-modal-close {
+    @apply absolute -top-10 right-0 text-4xl text-text no-underline opacity-70 transition-opacity;
+  }
+
+  .photo-modal-close:hover {
+    @apply opacity-100 text-text;
+  }
+
+  /* ============================================
      REPLIES LIST
      ============================================ */
   .replies-list {
@@ -421,6 +459,45 @@
 
   .microblog_time a:hover {
     @apply text-text opacity-100 underline;
+  }
+
+  /* Reply form (injected by conversation.js) */
+  .microblog_reply_form {
+    @apply mt-12 p-8 rounded-lg;
+    background: #00000030;
+  }
+
+  .microblog_reply_signin {
+    @apply text-lg text-text mb-4;
+  }
+
+  .microblog_reply_signin a {
+    @apply text-accent underline;
+  }
+
+  .microblog_reply_textarea {
+    @apply w-full p-4 rounded-lg text-lg mb-4;
+    background: var(--background-alt);
+    color: var(--text);
+    border: 1px solid var(--accent);
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .microblog_reply_textarea:focus {
+    @apply outline-none;
+    border-color: var(--text);
+  }
+
+  .microblog_reply_button {
+    @apply px-6 py-3 rounded-lg font-bold no-underline cursor-pointer;
+    background: var(--accent);
+    color: var(--background);
+    border: none;
+  }
+
+  .microblog_reply_button:hover {
+    background: var(--text);
   }
 }
 
