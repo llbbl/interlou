@@ -52,8 +52,22 @@
 
   {{ template "_internal/google_analytics.html" . }}
 
-  <!-- Highlight.js -->
+  <!-- Highlight.js (includes 40+ common languages: js, ts, python, go, php, rust, bash, etc.) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
+  <script>
+    // Extend bash highlighting with custom CLI tools in different categories for distinct colors
+    const bash = hljs.getLanguage('bash');
+
+    // Package managers & language CLIs (keyword color - typically purple/pink)
+    bash.keywords.keyword += ' go npm pnpm yarn pip poetry cargo composer rustup gem bundle';
+
+    // Container & infrastructure tools (built_in color - typically yellow/tan)
+    bash.keywords.built_in += ' docker kubectl terraform ansible helm vault consul';
+
+    // Custom tools & utilities (literal color - typically cyan/blue)
+    bash.keywords.literal += ' api2spec hugo jekyll brew apt yum wget curl git gh make cmake';
+
+    hljs.highlightAll();
+  </script>
 </body>
 </html>
