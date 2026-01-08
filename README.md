@@ -12,7 +12,7 @@ https://github.com/llbbl/interlou
 
 ## Development
 
-This theme uses Vite + Tailwind CSS for styling.
+This theme uses Tailwind CSS v4 for styling.
 
 ### Prerequisites
 
@@ -71,6 +71,28 @@ The theme uses:
 - **Roboto Mono** for dates and navigation
 
 Loaded via Google Fonts in the base template.
+
+## External Dependencies
+
+The following are loaded from CDNs in `layouts/_default/baseof.html`:
+
+| Dependency | Version | Released | Purpose |
+|------------|---------|----------|---------|
+| [Highlight.js](https://highlightjs.org/) | 11.11.1 | Dec 2024 | Syntax highlighting for code blocks |
+| Google Fonts | — | — | Rubik + Roboto Mono fonts |
+
+### Updating Highlight.js
+
+Check for new releases at https://github.com/highlightjs/highlight.js/releases
+
+Update the version in `baseof.html` (both CSS and JS URLs):
+```html
+<!-- CSS -->
+.../highlight.js/11.11.1/styles/tokyo-night-dark.min.css
+
+<!-- JS -->
+.../highlight.js/11.11.1/highlight.min.js
+```
 
 ## Credits
 

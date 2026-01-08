@@ -46,6 +46,19 @@ pnpm dev
 3. Commit the built CSS (`static/css/styles.css`)
 4. Push to GitHub - Micro.blog auto-pulls updates
 
+## External Dependencies (CDN)
+
+**Reminder: Check for dependency updates every few months.**
+
+These are loaded from CDNs in `layouts/_default/baseof.html`:
+
+| Dependency | Version | Released | Check for Updates |
+|------------|---------|----------|-------------------|
+| Highlight.js | 11.11.1 | Dec 2024 | https://github.com/highlightjs/highlight.js/releases |
+| Google Fonts (Rubik, Roboto Mono) | — | — | No version bumps needed |
+
+To update Highlight.js, change the version number in both the CSS and JS URLs in `baseof.html`.
+
 ## Git Policy
 
 **Do not run `git add` or `git commit` automatically.** Let the user review changes before committing.

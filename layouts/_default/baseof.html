@@ -11,6 +11,9 @@
   
   <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}?v={{ now.Unix }}">
 
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-dark.min.css">
+
   <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Author.username }}/favicon.png" type="image/x-icon">
   
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
@@ -29,7 +32,7 @@
     <header class="site-header">
       <div class="site-branding">
         {{ with .Site.Author.avatar }}
-          <a href="/" class="site-image-link"><img src="{{ . }}" class="site-image" alt="{{ $.Site.Title }}"></a>
+          <a href="/" class="site-image-link"><img src="{{ . }}" class="site-image" alt="{{ $.Site.Title }}" loading="lazy"></a>
         {{ end }}
         <h1><a class="site-title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>
       </div>
@@ -48,5 +51,9 @@
   </div>
 
   {{ template "_internal/google_analytics.html" . }}
+
+  <!-- Highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </body>
 </html>

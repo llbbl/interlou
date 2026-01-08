@@ -63,6 +63,15 @@
     @apply text-accent;
   }
 
+  /* Focus states for keyboard navigation */
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-none;
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   /* Images */
   img {
     @apply w-full h-auto align-middle;
@@ -74,8 +83,14 @@
   }
 
   /* Lists */
-  ul, ol {
+  ul {
     @apply ml-10;
+    list-style-type: disc;
+  }
+
+  ol {
+    @apply ml-10;
+    list-style-type: decimal;
   }
 
   li > ul, li > ol {
@@ -184,11 +199,14 @@
      CONTENT
      ============================================ */
   .e-content p a,
-  .e-content p a:visited {
-    @apply text-text underline;
+  .e-content p a:visited,
+  .e-content li a,
+  .e-content li a:visited {
+    @apply text-text-alt underline;
   }
 
   .e-content p a:hover,
+  .e-content li a:hover,
   .h-entry a:hover {
     @apply text-accent;
   }
@@ -210,31 +228,23 @@
     @apply mb-0;
   }
 
-  /* Code */
-  pre, code {
-    @apply text-code rounded text-text;
-    background: var(--accent-alt);
-  }
-
-  article pre {
-    background-color: rgb(162, 28, 175);
-  }
-
-  article code {
-    background-color: rgb(162, 28, 175);
-    color: rgb(245, 208, 254);
-  }
-
+  /* Code - inline code styling */
   code {
-    @apply px-2 py-1;
+    @apply text-code rounded px-2 py-1 font-mono;
+    background: #1a1b26;
+    color: #9ece6a;
   }
 
+  /* Code blocks - let Highlight.js handle syntax colors */
   pre {
-    @apply px-8 py-6 my-9 overflow-x-auto;
+    @apply text-code rounded px-8 py-6 my-9 overflow-x-auto;
+    background: #1a1b26;
   }
 
-  pre > code {
-    @apply border-0 p-0;
+  pre code {
+    @apply p-0;
+    background: transparent;
+    color: inherit;
   }
 
   /* ============================================
