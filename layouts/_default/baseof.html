@@ -55,17 +55,18 @@
   <!-- Highlight.js (includes 40+ common languages: js, ts, python, go, php, rust, bash, etc.) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   <script>
-    // Extend bash highlighting with custom CLI tools in different categories for distinct colors
+    // Extend bash highlighting with custom CLI tools in different categories
     const bash = hljs.getLanguage('bash');
 
     // Package managers & language CLIs (keyword color - typically purple/pink)
-    bash.keywords.keyword += ' go npm pnpm yarn pip poetry cargo composer rustup gem bundle';
+    bash.keywords.keyword = (bash.keywords.keyword || '') + ' go npm pnpm yarn pip poetry cargo composer rustup gem bundle bun deno node python ruby php java';
 
-    // Container & infrastructure tools (built_in color - typically yellow/tan)
-    bash.keywords.built_in += ' docker kubectl terraform ansible helm vault consul';
+    // Container, infrastructure tools & common shell commands (built_in color - yellow/tan)
+    // Include core bash built-ins explicitly to ensure they're not lost
+    bash.keywords.built_in += ' docker kubectl terraform ansible helm vault consul cd ls cat echo mkdir rm rmdir cp mv touch chmod chown grep sed awk find head tail sort uniq wc man less more tar gzip gunzip zip unzip ssh scp rsync pwd export source alias unalias history which whereis whoami hostname date cal df du free top ps kill killall jobs bg fg nohup xargs tee tr cut paste join diff cmp file stat readlink basename dirname';
 
     // Custom tools & utilities (literal color - typically cyan/blue)
-    bash.keywords.literal += ' api2spec hugo jekyll brew apt yum wget curl git gh make cmake';
+    bash.keywords.literal = (bash.keywords.literal || '') + ' api2spec hugo jekyll brew apt apt-get yum dnf pacman wget curl git gh make cmake ninja gcc clang rustc javac tsc esbuild vite webpack';
 
     hljs.highlightAll();
   </script>
