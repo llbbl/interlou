@@ -514,7 +514,7 @@
      NEWSLETTER CTA
      ============================================ */
   .newsletter-cta {
-    @apply mt-8 pt-6 text-center;
+    @apply mt-8 pt-6 pb-8 text-center;
     border-top: 1px solid rgba(217, 70, 239, 0.2);
   }
 
