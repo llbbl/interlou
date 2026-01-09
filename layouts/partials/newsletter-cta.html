@@ -1,0 +1,10 @@
+{{/* Newsletter CTA - Only shows on posts with titles (long posts) */}}
+{{ if .Title }}
+<div class="newsletter-cta">
+  <form method="POST" action="https://micro.blog/users/subscribe/70990">
+    <span class="newsletter-cta-label">Enjoyed this?</span>
+    <input type="email" name="email" placeholder="your@email.com" required />
+    <input type="submit" value="Subscribe" />
+  </form>
+</div>
+{{ end }}

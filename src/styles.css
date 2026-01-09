@@ -509,6 +509,60 @@
   .microblog_reply_button:hover {
     background: var(--text);
   }
+
+  /* ============================================
+     NEWSLETTER CTA
+     ============================================ */
+  .newsletter-cta {
+    @apply mt-8 pt-6 text-center;
+    border-top: 1px solid rgba(217, 70, 239, 0.2);
+  }
+
+  .newsletter-cta form {
+    @apply inline-flex items-center rounded-full;
+    background: var(--background-alt);
+    border: 1px solid rgba(217, 70, 239, 0.3);
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .newsletter-cta-label {
+    @apply text-sm text-text-alt whitespace-nowrap;
+    padding: 6px 12px 6px 16px;
+  }
+
+  .newsletter-cta input[type="email"] {
+    @apply text-sm border-none bg-transparent text-text outline-none;
+    padding: 8px 12px;
+    width: 180px;
+  }
+
+  .newsletter-cta input[type="email"]::placeholder {
+    color: rgba(238, 238, 238, 0.5);
+  }
+
+  .newsletter-cta input[type="email"]:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-radius: 4px;
+  }
+
+  .newsletter-cta input[type="submit"] {
+    @apply text-sm font-semibold border-none rounded-full cursor-pointer;
+    padding: 8px 20px;
+    color: var(--background);
+    background: var(--accent);
+    transition: background 0.2s;
+  }
+
+  .newsletter-cta input[type="submit"]:hover {
+    background: var(--text);
+  }
+
+  .newsletter-cta input[type="submit"]:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+  }
 }
 
 /* ============================================
@@ -567,5 +621,32 @@
 
   .post-list > li {
     @apply mb-16;
+  }
+
+  /* Newsletter CTA mobile */
+  .newsletter-cta form {
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .newsletter-cta-label {
+    padding: 4px 0 8px 0;
+  }
+
+  .newsletter-cta input[type="email"] {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(217, 70, 239, 0.3);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 10px 12px;
+  }
+
+  .newsletter-cta input[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
   }
 }
