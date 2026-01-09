@@ -6,8 +6,6 @@
   {{ .Content }}
 </div>
 
-{{ partial "newsletter-cta.html" . }}
-
 <p class="date">
   <a class="u-url" href="{{ .Permalink }}">
     <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
@@ -21,3 +19,5 @@
     {{ end }}
   {{ end }}
 </p>
+
+{{ partial "newsletter-cta.html" . }}
