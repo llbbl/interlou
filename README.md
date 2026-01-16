@@ -94,6 +94,24 @@ Update the version in `baseof.html` (both CSS and JS URLs):
 .../highlight.js/11.11.1/highlight.min.js
 ```
 
+## Custom Pages
+
+Current custom section templates in `layouts/section/`:
+
+- `/links/` - Logan Links (imported bookmarks from Raindrop.io)
+- `/replies/` - Reply posts
+
+### Future Ideas
+
+See [slashpages.net](https://slashpages.net/) for inspiration on additional pages:
+
+- `/now/` - Current focus
+- `/uses/` - Tools and setup
+- `/recommendations/` - Favorite books, podcasts, tools
+- `/defaults/` - Default apps
+- `/blogroll/` - Blogs you follow
+- `/colophon/` - How the site is built
+
 ## Credits
 
 Inspired by [Outpost](https://github.com/mchlhyns/theme-outpost) by Mike Haynes.
