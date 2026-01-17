@@ -578,6 +578,22 @@
     @apply text-accent opacity-60;
   }
 
+  /* Links archive button */
+  .links-archive-cta {
+    @apply text-center mt-16;
+  }
+
+  .links-archive-cta a {
+    @apply inline-block no-underline px-8 py-4 rounded-lg font-bold text-lg transition-all duration-200;
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  .links-archive-cta a:hover {
+    background: var(--text);
+    transform: translateY(-2px);
+  }
+
   /* ============================================
      NEWSLETTER CTA
      ============================================ */
