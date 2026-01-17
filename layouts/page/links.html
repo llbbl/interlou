@@ -20,4 +20,9 @@
 </ul>
 
 {{ partial "pagination.html" . }}
+
+{{ if .Site.Params.include_conversation }}
+<div id="conversation" class="microblog_conversation"></div>
+<script src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
+{{ end }}
 {{ end }}
