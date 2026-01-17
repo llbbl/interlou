@@ -544,6 +544,8 @@
 
   .link-card-title {
     @apply text-xl font-bold mb-2 leading-tight;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .link-card-title a {
