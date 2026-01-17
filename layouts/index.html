@@ -1,7 +1,15 @@
 {{ define "main" }}
 <ul class="post-list">
   {{ $posts := where .Site.RegularPages "Type" "post" }}
-  {{ $paginator := .Paginate $posts }}
+  {{/* Exclude posts with "links" category from main feed */}}
+  {{ $filtered := slice }}
+  {{ range $posts }}
+    {{ $cats := .Params.categories | default slice }}
+    {{ if not (in $cats "links") }}
+      {{ $filtered = $filtered | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $paginator := .Paginate $filtered }}
   {{ range $paginator.Pages }}
   <li class="h-entry">
     {{ partial "post.html" . }}
