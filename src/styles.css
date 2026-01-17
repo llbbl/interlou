@@ -515,7 +515,7 @@
      ============================================ */
 
   /* Hide Micro.blog's auto-generated h1 when our header is present */
-  h1:has(+ .links-header) {
+  .h-entry > h1:has(~ .e-content .links-header) {
     display: none;
   }
 
