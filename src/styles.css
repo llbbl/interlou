@@ -511,6 +511,62 @@
   }
 
   /* ============================================
+     LINK CARDS (for /links/ page)
+     ============================================ */
+  .link-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    @apply list-none ml-0;
+  }
+
+  .link-card {
+    @apply rounded-lg p-6 transition-all duration-200;
+    background: var(--background-alt);
+    border: 1px solid rgba(217, 70, 239, 0.2);
+  }
+
+  .link-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .link-card-title {
+    @apply text-xl font-bold mb-2 leading-tight;
+  }
+
+  .link-card-title a {
+    @apply text-text no-underline;
+  }
+
+  .link-card-title a:hover {
+    @apply text-accent;
+  }
+
+  .link-card-description {
+    @apply text-base text-text-alt mb-4 leading-relaxed;
+  }
+
+  .link-card-meta {
+    @apply flex items-center justify-between text-sm font-mono uppercase tracking-wide opacity-50;
+  }
+
+  .link-card-domain {
+    @apply text-accent;
+  }
+
+  .link-card-date {
+    @apply text-text;
+  }
+
+  /* External link indicator */
+  .link-card-title a::after {
+    content: " ↗";
+    @apply text-accent opacity-60;
+  }
+
+  /* ============================================
      NEWSLETTER CTA
      ============================================ */
   .newsletter-cta {
@@ -620,6 +676,24 @@
 
   .post-list > li {
     @apply mb-16;
+  }
+
+  /* Link cards mobile */
+  .link-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .link-card {
+    @apply p-5;
+  }
+
+  .link-card-title {
+    @apply text-lg;
+  }
+
+  .link-card-description {
+    @apply text-sm mb-3;
   }
 
   /* Newsletter CTA mobile */
