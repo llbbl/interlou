@@ -513,6 +513,16 @@
   /* ============================================
      LINK CARDS (for /links/ page)
      ============================================ */
+  .links-intro {
+    @apply mb-16 max-w-2xl;
+  }
+
+  .links-intro p,
+  .links-description {
+    @apply text-text-alt leading-relaxed;
+    font-size: 1.5rem;
+  }
+
   .link-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -679,6 +689,15 @@
   }
 
   /* Link cards mobile */
+  .links-intro {
+    @apply mb-10;
+  }
+
+  .links-intro p,
+  .links-description {
+    font-size: 1.125rem;
+  }
+
   .link-cards {
     grid-template-columns: 1fr;
     gap: 16px;
