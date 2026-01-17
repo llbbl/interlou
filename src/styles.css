@@ -513,6 +513,25 @@
   /* ============================================
      LINK CARDS (for /links/ page)
      ============================================ */
+
+  /* Hide Micro.blog's auto-generated h1 when our header is present */
+  h1:has(+ .links-header) {
+    display: none;
+  }
+
+  .links-header {
+    @apply flex items-baseline justify-between gap-8 mb-12;
+  }
+
+  .links-header h1 {
+    @apply mb-0 flex-shrink-0;
+  }
+
+  .links-header p {
+    @apply text-text-alt leading-relaxed mb-0 text-right;
+    font-size: 1.25rem;
+  }
+
   .links-intro {
     @apply mb-16 max-w-2xl;
   }
@@ -707,6 +726,15 @@
   }
 
   /* Link cards mobile */
+  .links-header {
+    @apply flex-col gap-2 mb-8;
+  }
+
+  .links-header p {
+    @apply text-left;
+    font-size: 1rem;
+  }
+
   .links-intro {
     @apply mb-10;
   }
