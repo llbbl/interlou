@@ -531,7 +531,7 @@
   }
 
   .link-card {
-    @apply rounded-lg p-6 transition-all duration-200;
+    @apply rounded-lg p-6 transition-all duration-200 flex flex-col;
     background: var(--background-alt);
     border: 1px solid rgba(217, 70, 239, 0.2);
   }
@@ -561,7 +561,7 @@
   }
 
   .link-card-meta {
-    @apply flex items-center justify-between text-sm font-mono uppercase tracking-wide opacity-50;
+    @apply flex items-center justify-between text-sm font-mono uppercase tracking-wide opacity-50 mt-auto pt-4;
   }
 
   .link-card-domain {
