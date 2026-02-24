@@ -139,7 +139,11 @@
   }
 
   .navigation {
-    @apply leading-none;
+    @apply leading-none flex items-center justify-between;
+  }
+
+  .nav-links {
+    @apply flex flex-wrap items-center;
   }
 
   .navigation a.page-link,
@@ -157,6 +161,100 @@
 
   .navigation a.page-link.is-active {
     @apply text-accent opacity-100;
+  }
+
+  /* ============================================
+     NAV ORB (Glowing Fuchsia Orb)
+     ============================================ */
+  .nav-orb-wrapper {
+    @apply relative flex-shrink-0;
+  }
+
+  .nav-orb-toggle {
+    @apply relative flex items-center justify-center font-mono font-bold cursor-pointer border-none;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--background);
+    font-size: 18px;
+    line-height: 1;
+    border: 1px solid rgba(217, 70, 239, 0.4);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .nav-orb-toggle:hover {
+    background: var(--text);
+    transform: scale(1.05);
+  }
+
+  .nav-orb-icon {
+    @apply block transition-transform duration-300;
+  }
+
+  .nav-orb-wrapper.is-open .nav-orb-icon {
+    transform: rotate(45deg);
+  }
+
+  .nav-orb-wrapper.is-open .nav-orb-toggle {
+    background: var(--text);
+  }
+
+  .nav-orb-panel {
+    @apply absolute right-0 z-50;
+    top: calc(100% + 10px);
+    min-width: 180px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(69, 29, 103, 0.92);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(217, 70, 239, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 16px rgba(217, 70, 239, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.6) translateY(-8px);
+    transform-origin: top right;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .nav-orb-wrapper.is-open .nav-orb-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+  }
+
+  .nav-orb-link {
+    @apply block font-mono text-sm uppercase font-bold tracking-wide text-text no-underline;
+    padding: 8px 4px;
+    opacity: 0.7;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-orb-link:hover {
+    @apply text-accent;
+    opacity: 1;
+  }
+
+  /* Staggered fade-in for orb panel links */
+  .nav-orb-wrapper.is-open .nav-orb-link {
+    animation: orb-link-in 0.25s ease forwards;
+    opacity: 0;
+  }
+
+  .nav-orb-wrapper.is-open .nav-orb-link:nth-child(1) { animation-delay: 0.08s; }
+  .nav-orb-wrapper.is-open .nav-orb-link:nth-child(2) { animation-delay: 0.14s; }
+  .nav-orb-wrapper.is-open .nav-orb-link:nth-child(3) { animation-delay: 0.20s; }
+  .nav-orb-wrapper.is-open .nav-orb-link:nth-child(4) { animation-delay: 0.26s; }
+
+  @keyframes orb-link-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 0.7;
+      transform: translateY(0);
+    }
   }
 
   /* ============================================
@@ -759,6 +857,23 @@
 
   .link-card-description {
     @apply text-sm mb-3;
+  }
+
+  /* Nav orb mobile */
+  .nav-orb-toggle {
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  .nav-orb-panel {
+    min-width: 160px;
+    padding: 10px 14px;
+  }
+
+  .nav-orb-link {
+    @apply text-xs;
+    padding: 6px 4px;
   }
 
   /* Newsletter CTA mobile */

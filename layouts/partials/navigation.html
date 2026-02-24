@@ -1,7 +1,69 @@
 <nav class="navigation">
-  {{ $currentPage := . }}
-  {{ range .Site.Menus.main }}
-    {{ $isActive := or (eq $currentPage.RelPermalink .URL) (eq $currentPage.RelPermalink (printf "%s/" .URL)) }}
-    <a class="page-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
-  {{ end }}
+  <div class="nav-links">
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+      {{ $isActive := or (eq $currentPage.RelPermalink .URL) (eq $currentPage.RelPermalink (printf "%s/" .URL)) }}
+      <a class="page-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a>
+    {{ end }}
+  </div>
+
+  <!-- Glowing Fuchsia Orb -->
+  <div class="nav-orb-wrapper">
+    <button
+      class="nav-orb-toggle"
+      aria-expanded="false"
+      aria-controls="nav-orb-panel"
+      aria-label="More navigation links"
+    >
+      <span class="nav-orb-icon">+</span>
+    </button>
+    <div class="nav-orb-panel" id="nav-orb-panel" role="menu" aria-hidden="true">
+      <a class="nav-orb-link" href="/categories/" role="menuitem">Categories</a>
+      <a class="nav-orb-link" href="/photos/" role="menuitem">Photos</a>
+      <a class="nav-orb-link" href="/subscribe/" role="menuitem">Subscribe</a>
+    </div>
+  </div>
 </nav>
+
+<script>
+(function() {
+  var toggle = document.querySelector('.nav-orb-toggle');
+  var panel = document.getElementById('nav-orb-panel');
+  var wrapper = document.querySelector('.nav-orb-wrapper');
+  if (!toggle || !panel) return;
+
+  function openOrb() {
+    wrapper.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    panel.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeOrb() {
+    wrapper.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (wrapper.classList.contains('is-open')) {
+      closeOrb();
+    } else {
+      openOrb();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!wrapper.contains(e.target)) {
+      closeOrb();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && wrapper.classList.contains('is-open')) {
+      closeOrb();
+      toggle.focus();
+    }
+  });
+})();
+</script>
