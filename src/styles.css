@@ -2,7 +2,7 @@
 
 /* ============================================
    INTERLOU THEME
-   A Micro.blog theme by Logan Lindquist
+   A Micro.blog theme by Logan Lindquist Land
    ============================================ */
 
 @source "../layouts/**/*.html";
@@ -370,18 +370,37 @@
     @apply mr-1;
   }
 
-  p.date .tag {
-    @apply text-sm no-underline inline-block rounded-full opacity-100;
+  p.date .tag,
+  .archive_categories a {
+    @apply font-mono text-sm uppercase font-bold tracking-wide no-underline inline-block rounded-full opacity-100;
     padding: 3px 14px;
     color: var(--text-alt);
     background: rgba(217, 70, 239, 0.12);
     border: 1px solid rgba(217, 70, 239, 0.25);
   }
 
-  p.date .tag:hover {
+  p.date .tag:hover,
+  .archive_categories a:hover {
     color: var(--text);
     background: rgba(217, 70, 239, 0.45);
     border-color: var(--accent);
+  }
+
+  /* Micro.blog injects .archive_categories on the archive page: one
+     <p><a></a></p> per category plus an inline lightgray border.
+     !important is needed to beat the inline style. Render as a
+     compact wrapping pill cloud. */
+  .archive_categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid rgba(217, 70, 239, 0.2) !important;
+    padding-bottom: 28px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .archive_categories p {
+    @apply m-0;
   }
 
   /* ============================================
