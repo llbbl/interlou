@@ -9,6 +9,7 @@
 
 @theme {
   --color-background: #371554;
+  --color-page-bg: #283571;
   --color-background-alt: #451d67;
   --color-text: #eeeeee;
   --color-text-alt: #cda0f4;
@@ -37,6 +38,7 @@
 @layer base {
   :root {
     --background: #371554;
+    --page-bg: #283571;
     --background-alt: #451d67;
     --text: #eeeeee;
     --text-alt: #cda0f4;
@@ -50,7 +52,9 @@
   }
 
   body {
-    @apply font-sans text-body text-text bg-background;
+    @apply font-sans text-body text-text;
+    /* Page canvas: complementary indigo-blue behind the purple glass wrapper */
+    background: var(--page-bg);
     margin: 120px auto;
     padding: 0 32px;
   }
