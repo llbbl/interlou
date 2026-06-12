@@ -73,19 +73,21 @@
   /* Starfield: repeating dot layers, gentle twinkle + slow drift */
   body::before {
     background-image:
-      radial-gradient(1px 1px at 25px 35px, rgba(238, 238, 238, 0.8) 50%, transparent 51%),
-      radial-gradient(1px 1px at 110px 150px, rgba(205, 160, 244, 0.7) 50%, transparent 51%),
-      radial-gradient(1.5px 1.5px at 200px 90px, rgba(238, 238, 238, 0.55) 50%, transparent 51%),
-      radial-gradient(1px 1px at 60px 220px, rgba(245, 208, 254, 0.6) 50%, transparent 51%);
-    background-size: 260px 260px, 340px 340px, 420px 420px, 520px 520px;
+      radial-gradient(2px 2px at 25px 35px, rgba(238, 238, 238, 0.95) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 110px 150px, rgba(205, 160, 244, 0.9) 50%, transparent 51%),
+      radial-gradient(2.5px 2.5px at 200px 90px, rgba(238, 238, 238, 0.75) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 60px 220px, rgba(245, 208, 254, 0.85) 50%, transparent 51%),
+      radial-gradient(2px 2px at 150px 250px, rgba(238, 238, 238, 0.7) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 280px 40px, rgba(217, 70, 239, 0.7) 50%, transparent 51%);
+    background-size: 180px 180px, 240px 240px, 320px 320px, 380px 380px, 440px 440px, 500px 500px;
     animation:
       star-twinkle 9s ease-in-out infinite alternate,
       star-drift 180s linear infinite alternate;
   }
 
   @keyframes star-twinkle {
-    from { opacity: 0.45; }
-    to { opacity: 0.9; }
+    from { opacity: 0.65; }
+    to { opacity: 1; }
   }
 
   @keyframes star-drift {
@@ -153,9 +155,9 @@
      ============================================ */
   .wrapper {
     @apply max-w-content mx-auto px-8 rounded-2xl;
-    background: rgba(55, 21, 84, 0.6);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(55, 21, 84, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(217, 70, 239, 0.12);
     padding-top: 48px;
     padding-bottom: 48px;
