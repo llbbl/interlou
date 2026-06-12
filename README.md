@@ -43,7 +43,7 @@ The built CSS outputs to `static/css/styles.css`.
 2. Run `pnpm build`
 3. Commit the built CSS
 4. Push to GitHub
-5. Micro.blog will pull the updated theme
+5. Update the theme from your Micro.blog account — Micro.blog does not auto-pull on every push (Design → Edit Custom Themes → open the theme → sync button)
 
 ## Customization
 

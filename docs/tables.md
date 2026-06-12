@@ -80,4 +80,4 @@ Notes for HTML tables in markdown posts:
 
 All table CSS is in `src/styles.css` (search for `/* Tables */`). The colors come from the theme tokens (`--accent`, `--background-alt`, and the code-block palette for `table-panel`), so palette changes propagate to tables automatically.
 
-After editing table styles, run `pnpm build` and commit the rebuilt `static/css/styles.css` — Micro.blog serves the committed file. There is no local preview; verify on the live site after pushing.
+After editing table styles, run `pnpm build` and commit the rebuilt `static/css/styles.css` — Micro.blog serves the committed file. Pushing to GitHub is not enough: trigger a theme sync from your Micro.blog account (Design → Edit Custom Themes → open the theme → sync button). There is no local preview; verify on the live site afterwards.
