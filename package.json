@@ -5,6 +5,10 @@
   "author": "Logan Lindquist Land",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@11.1.3",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --watch",
     "build": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --minify"

@@ -1,0 +1,16 @@
+# Supply-chain hardening (pnpm 11 defaults shown explicitly)
+minimumReleaseAge: 1440         # block packages < 24 h old
+blockExoticSubdeps: true        # no git/tarball transitive deps
+strictDepBuilds: true           # fail install on unapproved postinstalls
+verifyDepsBeforeRun: install    # re-check lockfile before `pnpm run`
+
+# Postinstall allowlist. @parcel/watcher ships prebuilt binaries via
+# optionalDependencies; its build script only compiles from source when
+# explicitly requested, so it stays blocked.
+allowBuilds:
+  '@parcel/watcher': false
+
+# Security overrides — keep picomatch on the patched 2.x line
+# (GHSA ReDoS + glob-matching advisories, fixed in 2.3.2)
+overrides:
+  "picomatch@<2.3.2": "^2.3.2"

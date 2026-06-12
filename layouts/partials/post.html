@@ -14,8 +14,7 @@
   </a>
   {{ with .Params.categories }}
     {{ range . }}
-      <span class="seperator">/</span>
-      <a href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+      <a class="tag" href="{{ "/categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
     {{ end }}
   {{ end }}
 </p>
