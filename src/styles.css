@@ -409,6 +409,52 @@
     @apply m-0;
   }
 
+  /* Micro.blog's archive post list: .h-feed of p.h-entry rows, each
+     containing a linked <time>, a literal ":" text node, a bold title
+     span, and a p-summary excerpt. font-size: 0 on the row hides the
+     stray colon; children restore their own sizes. */
+  .h-feed p.h-entry {
+    font-size: 0;
+    margin-bottom: 36px;
+  }
+
+  .h-feed p.h-entry .u-url {
+    @apply no-underline;
+  }
+
+  .h-feed p.h-entry time {
+    @apply font-mono text-sm font-bold tracking-wide inline-block rounded-full;
+    line-height: 1.5;
+    padding: 2px 12px;
+    margin-bottom: 8px;
+    color: var(--text-alt);
+    background: rgba(205, 160, 244, 0.1);
+    border: 1px solid rgba(205, 160, 244, 0.3);
+  }
+
+  .h-feed p.h-entry time::before {
+    content: "📅";
+    margin-right: 8px;
+  }
+
+  .h-feed p.h-entry .u-url:hover time {
+    color: var(--text);
+    background: rgba(217, 70, 239, 0.45);
+    border-color: var(--accent);
+  }
+
+  .h-feed p.h-entry .p-name {
+    @apply block text-body;
+    line-height: 1.5;
+  }
+
+  .h-feed p.h-entry .p-summary {
+    @apply block text-body;
+    line-height: 1.5;
+    margin-top: 2px;
+    color: rgba(238, 238, 238, 0.55);
+  }
+
   /* ============================================
      CONTENT
      ============================================ */
