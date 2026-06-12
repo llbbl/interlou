@@ -345,6 +345,154 @@
     color: inherit;
   }
 
+  /* Tables */
+  table {
+    @apply my-9 text-body;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    @apply px-4 py-3 align-top;
+    border-bottom: 1px solid var(--background-alt);
+  }
+
+  th {
+    @apply text-accent uppercase text-heading-3 font-bold;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  tbody tr:nth-child(even) {
+    background: var(--background-alt);
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Table variants — markdown pipe tables always get the default style
+     above. Markdown syntax can't add a class, so variants require writing
+     the table as raw HTML in the post. See docs/tables.md. */
+
+  /* Minimal: header rule + hairlines only, no zebra striping */
+  table.table-minimal tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  /* Grid: full borders around every cell, no zebra striping */
+  table.table-grid th,
+  table.table-grid td {
+    border: 1px solid var(--background-alt);
+  }
+
+  table.table-grid tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  table.table-grid tbody tr:last-child td {
+    border-bottom: 1px solid var(--background-alt);
+  }
+
+  /* Panel: dark rounded panel matching code blocks */
+  table.table-panel {
+    @apply rounded p-4;
+    background: #1a1b26;
+  }
+
+  table.table-panel th {
+    @apply font-mono text-accent-code-text;
+    border-bottom: 2px solid var(--color-accent-code);
+  }
+
+  table.table-panel td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  table.table-panel tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  table.table-panel tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Color panels: standout table backgrounds that complement the purple.
+     Same structure as table-panel, different palettes. */
+
+  /* Midnight: dark navy panel, light blue text, gold headers */
+  table.table-midnight {
+    @apply rounded p-4;
+    background: #16213e;
+  }
+
+  table.table-midnight th {
+    color: #ffd866;
+    border-bottom: 2px solid #ffd866;
+  }
+
+  table.table-midnight td {
+    color: #b8d4f8;
+    border-bottom: 1px solid rgba(184, 212, 248, 0.18);
+  }
+
+  table.table-midnight tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  table.table-midnight tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Ember: deep maroon panel (theme accent-alt), gold headers, warm text */
+  table.table-ember {
+    @apply rounded p-4;
+    background: var(--accent-alt);
+  }
+
+  table.table-ember th {
+    color: #fbbf24;
+    border-bottom: 2px solid #fbbf24;
+  }
+
+  table.table-ember td {
+    color: #f5e6d3;
+    border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+  }
+
+  table.table-ember tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  table.table-ember tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Ocean: dark teal panel, aqua headers, pale aqua text */
+  table.table-ocean {
+    @apply rounded p-4;
+    background: #0c3338;
+  }
+
+  table.table-ocean th {
+    color: #5eead4;
+    border-bottom: 2px solid #5eead4;
+  }
+
+  table.table-ocean td {
+    color: #d0f4ee;
+    border-bottom: 1px solid rgba(94, 234, 212, 0.18);
+  }
+
+  table.table-ocean tbody tr:nth-child(even) {
+    background: transparent;
+  }
+
+  table.table-ocean tbody tr:last-child td {
+    border-bottom: none;
+  }
+
   /* ============================================
      PAGE CONTENT
      ============================================ */

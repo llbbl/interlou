@@ -72,6 +72,10 @@ The theme uses:
 
 Loaded via Google Fonts in the base template.
 
+### Tables
+
+Markdown tables in posts are styled automatically (accent header + zebra striping). Opt-in variants — structural (`table-minimal`, `table-grid`, `table-panel`) and color panels (`table-midnight`, `table-ember`, `table-ocean`) — can be applied by writing the table as raw HTML with the class on the `<table>` element. See [docs/tables.md](docs/tables.md) for the full guide and a copy-paste template.
+
 ## External Dependencies
 
 The following are loaded from CDNs in `layouts/_default/baseof.html`:
