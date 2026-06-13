@@ -9,7 +9,7 @@
 
 @theme {
   --color-background: #371554;
-  --color-page-bg: #283571;
+  --color-page-bg: #2b58b1;
   --color-background-alt: #451d67;
   --color-text: #eeeeee;
   --color-text-alt: #cda0f4;
@@ -38,7 +38,7 @@
 @layer base {
   :root {
     --background: #371554;
-    --page-bg: #283571;
+    --page-bg: #2b58b1;
     --background-alt: #451d67;
     --text: #eeeeee;
     --text-alt: #cda0f4;
@@ -159,10 +159,10 @@
      ============================================ */
   .wrapper {
     @apply max-w-content mx-auto px-8 rounded-2xl;
-    background: rgba(55, 21, 84, 0.45);
+    background: rgba(73, 139, 155, 0.55);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(217, 70, 239, 0.12);
+    border: 1px solid rgba(73, 139, 155, 0.35);
     padding-top: 48px;
     padding-bottom: 48px;
   }
