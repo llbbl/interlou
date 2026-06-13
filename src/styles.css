@@ -66,16 +66,19 @@
      to the canvas, so the layer sits between it
      and the content.
      ============================================ */
-  body::before {
+  body::before,
+  body::after {
     content: "";
     position: fixed;
-    inset: -10%;
-    z-index: -1;
     pointer-events: none;
   }
 
-  /* Starfield: repeating dot layers, gentle twinkle + slow drift */
+  /* Starfield (front layer): repeating dot tiles, gentle twinkle + a steady
+     upward rise. Tile HEIGHTS are normalized to 300px so the vertical scroll
+     wraps seamlessly (no jump on loop); widths/colors stay varied for depth. */
   body::before {
+    inset: -10%;
+    z-index: -1;
     background-image:
       radial-gradient(2px 2px at 25px 35px, rgba(238, 238, 238, 0.95) 50%, transparent 51%),
       radial-gradient(1.5px 1.5px at 110px 150px, rgba(205, 160, 244, 0.9) 50%, transparent 51%),
@@ -83,10 +86,27 @@
       radial-gradient(1.5px 1.5px at 60px 220px, rgba(245, 208, 254, 0.85) 50%, transparent 51%),
       radial-gradient(2px 2px at 150px 250px, rgba(238, 238, 238, 0.7) 50%, transparent 51%),
       radial-gradient(1.5px 1.5px at 280px 40px, rgba(217, 70, 239, 0.7) 50%, transparent 51%);
-    background-size: 180px 180px, 240px 240px, 320px 320px, 380px 380px, 440px 440px, 500px 500px;
+    background-size: 180px 300px, 240px 300px, 320px 300px, 380px 300px, 440px 300px, 500px 300px;
     animation:
       star-twinkle 14s ease-in-out infinite alternate,
-      star-drift 420s linear infinite alternate;
+      star-rise 60s linear infinite;
+  }
+
+  /* Nebula (back layer): soft drifting gas clouds in the theme palette. Sits
+     behind the stars (z-index -2) but above the page bg, so the base color is
+     untouched — these are low-alpha glows that slowly morph and pulse. */
+  body::after {
+    inset: -20%;
+    z-index: -2;
+    background-image:
+      radial-gradient(40% 35% at 70% 22%, rgba(217, 70, 239, 0.20), transparent 70%),
+      radial-gradient(45% 40% at 22% 68%, rgba(205, 160, 244, 0.16), transparent 70%),
+      radial-gradient(38% 32% at 52% 48%, rgba(73, 139, 155, 0.12), transparent 70%),
+      radial-gradient(32% 50% at 86% 82%, rgba(162, 28, 175, 0.18), transparent 70%);
+    filter: blur(24px);
+    animation:
+      nebula-drift 80s ease-in-out infinite alternate,
+      nebula-pulse 24s ease-in-out infinite alternate;
   }
 
   @keyframes star-twinkle {
@@ -94,13 +114,25 @@
     to { opacity: 1; }
   }
 
-  @keyframes star-drift {
-    from { transform: translate3d(0, 0, 0); }
-    to { transform: translate3d(-2%, -3%, 0); }
+  /* one full tile height = seamless loop */
+  @keyframes star-rise {
+    from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+    to   { background-position: 0 -300px, 0 -300px, 0 -300px, 0 -300px, 0 -300px, 0 -300px; }
+  }
+
+  @keyframes nebula-drift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(2%, -4%, 0) scale(1.08); }
+  }
+
+  @keyframes nebula-pulse {
+    from { opacity: 0.7; }
+    to   { opacity: 1; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    body::before {
+    body::before,
+    body::after {
       animation: none;
     }
   }
