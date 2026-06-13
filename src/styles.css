@@ -191,10 +191,10 @@
      ============================================ */
   .wrapper {
     @apply max-w-content mx-auto px-8 rounded-2xl;
-    background: rgba(73, 139, 155, 0.55);
+    background: rgba(20, 76, 97, 0.72);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(73, 139, 155, 0.35);
+    border: 1px solid rgba(73, 139, 155, 0.4);
     padding-top: 48px;
     padding-bottom: 48px;
   }
