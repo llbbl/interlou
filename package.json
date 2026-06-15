@@ -11,10 +11,12 @@
   },
   "scripts": {
     "dev": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --watch",
-    "build": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --minify"
+    "build": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --minify",
+    "gen:fallback": "node scripts/gen-font-fallback.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",
+    "fontaine": "^0.8.0",
     "tailwindcss": "^4.1.18"
   }
 }
