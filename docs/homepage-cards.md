@@ -40,10 +40,10 @@ Supporting images inside homepage cards requires explicit theme logic. The theme
 
 ## Local layout preview
 
-The ignored local preview includes titled, titleless, media-only, image-first, early-image, and image-last fixtures. Start it from the repository root:
+The tracked local preview includes titled, titleless, media-only, image-first, early-image, and image-last fixtures. Start it from the repository root:
 
 ```bash
-bun run ./_/preview-server.ts
+pnpm preview
 ```
 
-Then open <http://127.0.0.1:48137/>. The preview uses the generated `static/css/styles.css`, so run `pnpm build` first after changing source styles.
+Then open <http://127.0.0.1:48137/>. The server runs with Bun and serves `preview/homepage-cards.html` using the generated `static/css/styles.css`, so run `pnpm build` first after changing source styles.
