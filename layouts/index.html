@@ -1,5 +1,5 @@
 {{ define "main" }}
-<ul class="post-list">
+<ul class="post-card-grid">
   {{ $posts := where .Site.RegularPages "Type" "post" }}
   {{/* Exclude posts with "links" category from main feed */}}
   {{ $filtered := slice }}
@@ -11,8 +11,33 @@
   {{ end }}
   {{ $paginator := .Paginate $filtered }}
   {{ range $paginator.Pages }}
-  <li class="h-entry">
-    {{ partial "post.html" . }}
+  {{ $excerpt := strings.Trim (.Plain | htmlUnescape) " \t\r\n" }}
+  <li class="h-entry post-card">
+    <a class="u-url post-card__link" href="{{ .Permalink }}">
+      <article class="post-card__body">
+        {{ with .Title }}
+          <h2 class="p-name post-card__title">{{ . }}</h2>
+        {{ end }}
+
+        {{ if $excerpt }}
+          <p class="p-summary post-card__excerpt">{{ $excerpt | truncate 240 }}</p>
+        {{ else }}
+          <p class="p-summary post-card__excerpt">Media post — open to view.</p>
+        {{ end }}
+
+        <footer class="post-card__meta">
+          <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Date.Format "Jan 2, 2006" }}
+          </time>
+          {{ with .Params.categories }}
+            {{ range . }}
+              <span class="p-category post-card__category">{{ . }}</span>
+            {{ end }}
+          {{ end }}
+          <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+        </footer>
+      </article>
+    </a>
   </li>
   {{ end }}
 </ul>
