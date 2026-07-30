@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interlou category discovery preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&amp;family=Rubik:wght@400;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    .preview-note {
+      margin-bottom: 40px;
+      padding: 20px 24px;
+      color: rgba(238, 238, 238, 0.82);
+      background: rgba(7, 45, 59, 0.46);
+      border: 1px solid rgba(205, 160, 244, 0.24);
+      border-radius: 12px;
+      line-height: 1.6;
+    }
+
+    .preview-section + .preview-section {
+      margin-top: 96px;
+      padding-top: 72px;
+      border-top: 1px solid rgba(205, 160, 244, 0.24);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <div class="site-branding">
+        <a href="/" class="site-image-link" aria-label="Preview index">
+          <span class="site-image" style="display:block;width:5rem;height:5rem;border-radius:9999px;background:linear-gradient(135deg,#d946ef,#072d3b);"></span>
+        </a>
+        <h1><a class="site-title" href="/">LLBBL</a></h1>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <aside class="preview-note">
+        This fixture puts the Archive summary and complete Categories directory on one page for review. On the live site they render at separate routes. Try “dev”, “agent”, or “zzz” in the filter; fewer than three characters intentionally leaves the full list visible.
+      </aside>
+
+      <section class="archive preview-section" aria-labelledby="preview-archive-heading">
+        <header class="archive-header">
+          <h1 id="preview-archive-heading">Archive</h1>
+          <p>Browse recent posts or start with a category.</p>
+        </header>
+
+        <section class="category-summary" aria-labelledby="preview-summary-heading">
+          <div class="category-summary__header">
+            <div>
+              <h2 id="preview-summary-heading">Explore categories</h2>
+              <p>A compact view of the topics used most often and most recently.</p>
+            </div>
+            <a class="category-summary__all" href="#preview-categories">Browse all categories <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="category-summary__groups">
+            <section class="category-summary__group" aria-labelledby="preview-popular-heading">
+              <h3 id="preview-popular-heading">Most used</h3>
+              <ul class="category-chip-list">
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Development</span><span class="category-chip__count" aria-label="42 posts">42</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">AI</span><span class="category-chip__count" aria-label="37 posts">37</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Writing</span><span class="category-chip__count" aria-label="26 posts">26</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Tools</span><span class="category-chip__count" aria-label="22 posts">22</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Personal</span><span class="category-chip__count" aria-label="18 posts">18</span></a></li>
+              </ul>
+            </section>
+
+            <section class="category-summary__group" aria-labelledby="preview-recent-heading">
+              <h3 id="preview-recent-heading">Recently used</h3>
+              <ul class="category-chip-list">
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Observability</span><span class="category-chip__count" aria-label="8 posts">8</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Agentic coding</span><span class="category-chip__count" aria-label="12 posts">12</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Developer experience</span><span class="category-chip__count" aria-label="6 posts">6</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Cloudflare</span><span class="category-chip__count" aria-label="4 posts">4</span></a></li>
+                <li><a class="category-chip" href="#preview-categories"><span class="category-chip__name">Context engineering</span><span class="category-chip__count" aria-label="3 posts">3</span></a></li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <div class="h-feed archive-feed" aria-label="Posts by date">
+          <p class="h-entry"><a href="#post-one" class="u-url"><time class="dt-published" datetime="2026-07-30">2026-07-30</time></a>: <span class="p-name"><b>Designing a quieter archive</b></span><span class="p-summary">A representative titled archive entry with a short summary.</span></p>
+          <p class="h-entry"><a href="#post-two" class="u-url"><time class="dt-published" datetime="2026-07-29">2026-07-29</time></a>: <span class="p-summary">A short untitled post still remains readable in the chronological list.</span></p>
+        </div>
+      </section>
+
+      <section id="preview-categories" class="category-directory preview-section" aria-labelledby="preview-categories-heading" data-category-filter>
+        <header class="category-directory__header">
+          <h1 id="preview-categories-heading">Categories</h1>
+          <p>Browse every topic used on the blog or filter the directory by name.</p>
+        </header>
+
+        <form class="category-filter" role="search" data-category-filter-form hidden>
+          <label for="preview-category-filter-input">Filter categories</label>
+          <div class="category-filter__controls">
+            <input id="preview-category-filter-input" type="search" inputmode="search" autocomplete="off" placeholder="Type at least 3 characters" aria-describedby="preview-category-filter-help preview-category-filter-status" data-category-filter-input>
+            <button type="button" data-category-filter-clear hidden>Clear</button>
+          </div>
+          <p class="category-filter__help" id="preview-category-filter-help">The full directory stays visible until at least three characters are entered.</p>
+        </form>
+
+        <p class="category-filter__status" id="preview-category-filter-status" aria-live="polite" aria-atomic="true" data-category-filter-status>15 categories</p>
+
+        <ul class="category-directory__list" data-category-filter-list>
+          <li data-category-filter-item data-category-name="agentic coding"><a class="category-chip" href="#agentic-coding"><span class="category-chip__name">Agentic coding</span><span class="category-chip__count" aria-label="12 posts">12</span></a></li>
+          <li data-category-filter-item data-category-name="ai"><a class="category-chip" href="#ai"><span class="category-chip__name">AI</span><span class="category-chip__count" aria-label="37 posts">37</span></a></li>
+          <li data-category-filter-item data-category-name="cloudflare"><a class="category-chip" href="#cloudflare"><span class="category-chip__name">Cloudflare</span><span class="category-chip__count" aria-label="4 posts">4</span></a></li>
+          <li data-category-filter-item data-category-name="context engineering"><a class="category-chip" href="#context-engineering"><span class="category-chip__name">Context engineering</span><span class="category-chip__count" aria-label="3 posts">3</span></a></li>
+          <li data-category-filter-item data-category-name="developer experience"><a class="category-chip" href="#developer-experience"><span class="category-chip__name">Developer experience</span><span class="category-chip__count" aria-label="6 posts">6</span></a></li>
+          <li data-category-filter-item data-category-name="development"><a class="category-chip" href="#development"><span class="category-chip__name">Development</span><span class="category-chip__count" aria-label="42 posts">42</span></a></li>
+          <li data-category-filter-item data-category-name="documentation"><a class="category-chip" href="#documentation"><span class="category-chip__name">Documentation</span><span class="category-chip__count" aria-label="9 posts">9</span></a></li>
+          <li data-category-filter-item data-category-name="machine learning"><a class="category-chip" href="#machine-learning"><span class="category-chip__name">Machine learning</span><span class="category-chip__count" aria-label="11 posts">11</span></a></li>
+          <li data-category-filter-item data-category-name="observability"><a class="category-chip" href="#observability"><span class="category-chip__name">Observability</span><span class="category-chip__count" aria-label="8 posts">8</span></a></li>
+          <li data-category-filter-item data-category-name="open source"><a class="category-chip" href="#open-source"><span class="category-chip__name">Open source</span><span class="category-chip__count" aria-label="14 posts">14</span></a></li>
+          <li data-category-filter-item data-category-name="personal"><a class="category-chip" href="#personal"><span class="category-chip__name">Personal</span><span class="category-chip__count" aria-label="18 posts">18</span></a></li>
+          <li data-category-filter-item data-category-name="software development"><a class="category-chip" href="#software-development"><span class="category-chip__name">Software development</span><span class="category-chip__count" aria-label="16 posts">16</span></a></li>
+          <li data-category-filter-item data-category-name="tools"><a class="category-chip" href="#tools"><span class="category-chip__name">Tools</span><span class="category-chip__count" aria-label="22 posts">22</span></a></li>
+          <li data-category-filter-item data-category-name="web development"><a class="category-chip" href="#web-development"><span class="category-chip__name">Web development</span><span class="category-chip__count" aria-label="7 posts">7</span></a></li>
+          <li data-category-filter-item data-category-name="writing"><a class="category-chip" href="#writing"><span class="category-chip__name">Writing</span><span class="category-chip__count" aria-label="26 posts">26</span></a></li>
+        </ul>
+
+        <p class="category-filter__empty" data-category-filter-empty hidden>No categories match that search.</p>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/static/js/category-filter.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 import { isAbsolute, relative, resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "..");
-const defaultDocument = "preview/homepage-cards.html";
+const defaultDocument = "preview/index.html";
 const allowedRoots = [resolve(root, "preview"), resolve(root, "static")];
 const port = Number(Bun.env.PORT ?? "48137");
 

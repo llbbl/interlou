@@ -1,0 +1,6 @@
+{{- $name := .name -}}
+{{- $count := .count -}}
+<a class="category-chip" href="{{ printf "/categories/%s/" ($name | urlize) | relURL }}">
+  <span class="category-chip__name">{{ $name }}</span>
+  <span class="category-chip__count" aria-label="{{ $count }} {{ if eq $count 1 }}post{{ else }}posts{{ end }}">{{ $count }}</span>
+</a>
