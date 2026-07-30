@@ -1,0 +1,80 @@
+{{ $categories := .Site.Taxonomies.categories }}
+{{ $popular := first 5 $categories.ByCount }}
+{{ $shownCategories := newScratch }}
+{{ $categoryCounts := newScratch }}
+
+{{ range $categories.ByCount }}
+  {{ $categoryCounts.Set (.Name | urlize) .Count }}
+{{ end }}
+
+{{ range $popular }}
+  {{ $shownCategories.Set (.Name | urlize) true }}
+{{ end }}
+
+{{ $recent := slice }}
+{{ $posts := where .Site.RegularPages "Type" "post" }}
+{{ range $posts.ByDate.Reverse }}
+  {{ range (.Params.categories | default slice) }}
+    {{ $name := . }}
+    {{ $key := $name | urlize }}
+    {{ if and (lt (len $recent) 5) (not ($shownCategories.Get $key)) }}
+      {{ $recent = $recent | append (dict "name" $name "count" ($categoryCounts.Get $key)) }}
+      {{ $shownCategories.Set $key true }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<section class="archive" aria-labelledby="archive-heading">
+  <header class="archive-header">
+    <h1 id="archive-heading">Archive</h1>
+    <p>Browse recent posts or start with a category.</p>
+  </header>
+
+  {{ if gt (len $categories) 0 }}
+    <section class="category-summary" aria-labelledby="category-summary-heading">
+      <div class="category-summary__header">
+        <div>
+          <h2 id="category-summary-heading">Explore categories</h2>
+          <p>A compact view of the topics used most often and most recently.</p>
+        </div>
+        <a class="category-summary__all" href="{{ "/categories/" | relURL }}">Browse all categories <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="category-summary__groups">
+        {{ if gt (len $popular) 0 }}
+          <section class="category-summary__group" aria-labelledby="popular-categories-heading">
+            <h3 id="popular-categories-heading">Most used</h3>
+            <ul class="category-chip-list">
+              {{ range $popular }}
+                <li>{{ partial "category-link.html" (dict "name" .Page.Title "count" .Count) }}</li>
+              {{ end }}
+            </ul>
+          </section>
+        {{ end }}
+
+        {{ if gt (len $recent) 0 }}
+          <section class="category-summary__group" aria-labelledby="recent-categories-heading">
+            <h3 id="recent-categories-heading">Recently used</h3>
+            <ul class="category-chip-list">
+              {{ range $recent }}
+                <li>{{ partial "category-link.html" . }}</li>
+              {{ end }}
+            </ul>
+          </section>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  <div class="h-feed archive-feed" aria-label="Posts by date">
+    {{ range $posts.ByDate.Reverse }}
+      <p class="h-entry">
+        <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "2006-01-02" }}</time></a>:
+        {{ if .Title }}
+          <span class="p-name"><b>{{ .Title }}</b></span>
+        {{ end }}
+        <span class="p-summary">{{ .Summary | plainify | htmlUnescape | truncate 100 }}</span>
+      </p>
+    {{ end }}
+  </div>
+</section>

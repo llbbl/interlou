@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{ $categories := .Site.Taxonomies.categories }}
+<section class="category-directory" aria-labelledby="categories-heading" data-category-filter>
+  <header class="category-directory__header">
+    <h1 id="categories-heading">Categories</h1>
+    <p>Browse every topic used on the blog or filter the directory by name.</p>
+  </header>
+
+  {{ if gt (len $categories) 0 }}
+    <form class="category-filter" role="search" data-category-filter-form hidden>
+      <label for="category-filter-input">Filter categories</label>
+      <div class="category-filter__controls">
+        <input
+          id="category-filter-input"
+          type="search"
+          inputmode="search"
+          autocomplete="off"
+          placeholder="Type at least 3 characters"
+          aria-describedby="category-filter-help category-filter-status"
+          data-category-filter-input
+        >
+        <button type="button" data-category-filter-clear hidden>Clear</button>
+      </div>
+      <p class="category-filter__help" id="category-filter-help">The full directory stays visible until at least three characters are entered.</p>
+    </form>
+
+    <p class="category-filter__status" id="category-filter-status" aria-live="polite" aria-atomic="true" data-category-filter-status>{{ len $categories }} categories</p>
+
+    <ul class="category-directory__list" data-category-filter-list>
+      {{ range $categories.Alphabetical }}
+        <li data-category-filter-item data-category-name="{{ .Page.Title | lower }}">
+          {{ partial "category-link.html" (dict "name" .Page.Title "count" .Count) }}
+        </li>
+      {{ end }}
+    </ul>
+
+    <p class="category-filter__empty" data-category-filter-empty hidden>No categories match that search.</p>
+  {{ else }}
+    <p>No categories have been published yet.</p>
+  {{ end }}
+</section>
+
+{{ if gt (len $categories) 0 }}
+  <script type="module" src="{{ "js/category-filter.js" | relURL }}"></script>
+{{ end }}
+{{ end }}

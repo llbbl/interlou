@@ -20,12 +20,14 @@ pnpm install
 pnpm dev
 pnpm preview
 pnpm build
+pnpm test
 pnpm gen:fallback
 ```
 
 - `pnpm dev` watches `src/styles.css` and rebuilds `static/css/styles.css`.
 - `pnpm preview` serves the tracked layout fixtures at <http://127.0.0.1:48137/>.
 - `pnpm build` creates the production CSS that should be committed with source changes.
+- `pnpm test` runs the Vitest coverage for browser-side theme behavior.
 - `pnpm gen:fallback` regenerates the metric-matched fallback font faces after font-family or font-weight changes.
 
 ## File map
@@ -50,4 +52,4 @@ Micro.blog does not automatically pull every GitHub push into an installed custo
 
 ## Validation
 
-There is currently no automated test suite. For theme work, the main validation step is a clean `pnpm build` plus reviewing the generated CSS diff. Use `pnpm preview` for representative local layout checks, then verify the real Hugo/Micro.blog output after syncing the theme.
+Run `pnpm test` for browser-side logic and `pnpm build` for every style or template change, then review the generated CSS diff. Use `pnpm preview` for representative layout and interaction checks, then verify the real Hugo/Micro.blog output after syncing the theme.

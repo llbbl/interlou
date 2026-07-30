@@ -13,11 +13,13 @@
     "dev": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --watch",
     "preview": "bun run ./scripts/preview-server.ts",
     "build": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --minify",
-    "gen:fallback": "node scripts/gen-font-fallback.mjs"
+    "gen:fallback": "node scripts/gen-font-fallback.mjs",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "fontaine": "^0.8.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "vitest": "^4.1.10"
   }
 }

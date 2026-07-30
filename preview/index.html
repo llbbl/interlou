@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interlou layout previews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&amp;family=Rubik:wght@400;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    .preview-index-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 0;
+      list-style: none;
+    }
+
+    .preview-index-list a {
+      display: block;
+      height: 100%;
+      padding: 24px;
+      color: #eeeeee;
+      text-decoration: none;
+      background: rgba(55, 21, 84, 0.58);
+      border: 1px solid rgba(205, 160, 244, 0.22);
+      border-radius: 16px;
+    }
+
+    .preview-index-list a:hover {
+      color: #eeeeee;
+      border-color: #d946ef;
+    }
+
+    .preview-index-list strong,
+    .preview-index-list span {
+      display: block;
+    }
+
+    .preview-index-list span {
+      margin-top: 8px;
+      color: #cda0f4;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <main class="page-content">
+      <h1>Layout previews</h1>
+      <ul class="preview-index-list">
+        <li>
+          <a href="/preview/homepage-cards.html">
+            <strong>Homepage cards</strong>
+            <span>Excerpt, metadata, and image-position fixtures.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/preview/category-discovery.html">
+            <strong>Archive and Categories</strong>
+            <span>Popular/recent category groups and the interactive directory filter.</span>
+          </a>
+        </li>
+      </ul>
+    </main>
+  </div>
+</body>
+</html>
