@@ -1,120 +1,35 @@
 # Interlou
 
-A theme for [Micro.blog](https://micro.blog). An interlude for your thoughts.
+Interlou is the personal [Micro.blog](https://micro.blog) theme for [llbbl.blog](https://llbbl.blog). This repository is public so other people can inspect the implementation, but the theme is tuned for one site and changes to fit that site rather than serving as a general-purpose starter theme.
 
-## Installation
+## Install
 
 In Micro.blog, go to **Design → Edit Custom Themes → New Theme** and paste:
 
-```
+```text
 https://github.com/llbbl/interlou
 ```
 
-## Development
+## Local development
 
-This theme uses Tailwind CSS v4 for styling.
-
-### Prerequisites
-
-- Node.js 18+
-- pnpm (or npm/yarn)
-
-### Setup
+Interlou uses Tailwind CSS v4 and requires Node.js 22+ with `pnpm@11.1.3`.
 
 ```bash
 pnpm install
-```
-
-### Build CSS
-
-```bash
-# One-time build
 pnpm build
-
-# Watch for changes
-pnpm dev
 ```
 
-The built CSS outputs to `static/css/styles.css`.
+Use `pnpm dev` while iterating. Edit `src/styles.css`, keep the generated `static/css/styles.css` committed alongside it, and manually sync the theme in Micro.blog after pushing.
 
-### Workflow
+## Docs
 
-1. Edit styles in `src/styles.css`
-2. Run `pnpm build`
-3. Commit the built CSS
-4. Push to GitHub
-5. Update the theme from your Micro.blog account — Micro.blog does not auto-pull on every push (Design → Edit Custom Themes → open the theme → sync button)
-
-## Customization
-
-### Colors
-
-Edit the CSS custom properties in `src/styles.css`:
-
-```css
-:root {
-  --background: #371554;
-  --background-alt: #451d67;
-  --text: #eeeeee;
-  --text-alt: #cda0f4;
-  --accent: rgb(217, 70, 239);
-  --accent-alt: #490123;
-}
-```
-
-Or modify `tailwind.config.js` for deeper changes.
-
-### Fonts
-
-The theme uses:
-- **Rubik** for body text
-- **Roboto Mono** for dates and navigation
-
-Loaded via Google Fonts in the base template.
-
-### Tables
-
-Markdown tables in posts are styled automatically (accent header + zebra striping). Opt-in variants — structural (`table-minimal`, `table-grid`, `table-panel`) and color panels (`table-midnight`, `table-ember`, `table-ocean`) — can be applied by writing the table as raw HTML with the class on the `<table>` element. See [docs/tables.md](docs/tables.md) for the full guide and a copy-paste template.
-
-## External Dependencies
-
-The following are loaded from CDNs in `layouts/_default/baseof.html`:
-
-| Dependency | Version | Released | Purpose |
-|------------|---------|----------|---------|
-| [Highlight.js](https://highlightjs.org/) | 11.11.1 | Dec 2024 | Syntax highlighting for code blocks |
-| Google Fonts | — | — | Rubik + Roboto Mono fonts |
-
-### Updating Highlight.js
-
-Check for new releases at https://github.com/highlightjs/highlight.js/releases
-
-Update the version in `baseof.html` (both CSS and JS URLs):
-```html
-<!-- CSS -->
-.../highlight.js/11.11.1/styles/tokyo-night-dark.min.css
-
-<!-- JS -->
-.../highlight.js/11.11.1/highlight.min.js
-```
-
-## Custom Pages
-
-Current custom section templates in `layouts/section/`:
-
-- `/links/` - Logan Links (imported bookmarks from Raindrop.io)
-- `/replies/` - Reply posts
-
-### Future Ideas
-
-See [slashpages.net](https://slashpages.net/) for inspiration on additional pages:
-
-- `/now/` - Current focus
-- `/uses/` - Tools and setup
-- `/recommendations/` - Favorite books, podcasts, tools
-- `/defaults/` - Default apps
-- `/blogroll/` - Blogs you follow
-- `/colophon/` - How the site is built
+- [Documentation index](docs/README.md)
+- [Development workflow](docs/development.md)
+- [Customization](docs/customization.md)
+- [Homepage cards](docs/homepage-cards.md)
+- [Tables](docs/tables.md)
+- [Dependencies and updates](docs/dependencies.md)
+- [Custom pages](docs/custom-pages.md)
 
 ## Credits
 

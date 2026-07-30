@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interlou homepage cards preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&amp;family=Rubik:wght@400;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    .preview-note {
+      margin-bottom: 32px;
+      padding: 20px 24px;
+      color: rgba(238, 238, 238, 0.82);
+      background: rgba(7, 45, 59, 0.46);
+      border: 1px solid rgba(205, 160, 244, 0.24);
+      border-radius: 12px;
+      line-height: 1.6;
+    }
+
+    .preview-note strong {
+      color: #eeeeee;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <div class="site-branding">
+        <a href="#" class="site-image-link" aria-label="Home">
+          <span class="site-image" style="display:block;width:5rem;height:5rem;border-radius:9999px;background:linear-gradient(135deg,#d946ef,#072d3b);"></span>
+        </a>
+        <h1><a class="site-title" href="#">LLBBL</a></h1>
+      </div>
+      <nav class="navigation" aria-label="Primary navigation">
+        <div class="nav-links">
+          <a class="page-link is-active" href="#">Home</a>
+          <a class="page-link" href="#">Archive</a>
+          <a class="page-link" href="#">Photos</a>
+          <a class="page-link" href="#">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <aside class="preview-note">
+        <strong>Image-placement experiment.</strong>
+        The production template currently builds excerpts from Hugo's plain-text output, so post images do not appear in cards at all. The last three fixtures intentionally insert the real image from “Hiding Poems Inside Images” at different positions to show how cards behave if body-image support is added later.
+      </aside>
+      <ul class="post-card-grid">
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-one">
+            <article class="post-card__body">
+              <h2 class="p-name post-card__title">Building a calmer personal publishing workflow</h2>
+              <p class="p-summary post-card__excerpt">I have been thinking about what makes a writing system feel sustainable. The best tools stay out of the way, keep the work portable, and make publishing feel like a natural final step instead of another project.</p>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-07-28">Jul 28, 2026</time>
+                <span class="p-category post-card__category">Writing</span>
+                <span class="p-category post-card__category">Tools</span>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-two">
+            <article class="post-card__body">
+              <p class="p-summary post-card__excerpt">A small joy today: realizing the garden is finally attracting fireflies again. It turns out leaving one corner a little wild was exactly the right decision.</p>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-07-26">Jul 26, 2026</time>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-three">
+            <article class="post-card__body">
+              <p class="p-summary post-card__excerpt">Media post — open to view.</p>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-07-24">Jul 24, 2026</time>
+                <span class="p-category post-card__category">Photos</span>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-four">
+            <article class="post-card__body">
+              <h2 class="p-name post-card__title">What I learned while untangling a deceptively complicated theme update</h2>
+              <p class="p-summary post-card__excerpt">The code change was small, but the surrounding constraints were not. A useful reminder that the quality of a change depends as much on understanding the system around it as writing the final lines.</p>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-07-21">Jul 21, 2026</time>
+                <span class="p-category post-card__category">Development</span>
+                <span class="p-category post-card__category">Micro.blog</span>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-image-first">
+            <article class="post-card__body">
+              <figure class="post-card__media">
+                <img src="https://cdn.uploads.micro.blog/70990/2026/tempest-square.png" width="500" height="500" alt="A central square surrounded by radiating lines with red points">
+              </figure>
+              <h2 class="p-name post-card__title">Post with an image at the beginning</h2>
+              <p class="p-summary post-card__excerpt">This text follows the lead image in the original post. The fixture checks whether early media pushes the title, excerpt, and metadata down or gets cropped by the card.</p>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-07-20">Jul 20, 2026</time>
+                <span class="p-category post-card__category">Image first</span>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-image-early">
+            <article class="post-card__body">
+              <h2 class="p-name post-card__title">Post with a few words before an image</h2>
+              <p class="p-summary post-card__excerpt">A quick note before the image appears here.</p>
+              <figure class="post-card__media">
+                <img src="https://cdn.uploads.micro.blog/70990/2026/tempest-square.png" width="500" height="500" alt="A central square surrounded by radiating lines with red points">
+              </figure>
+              <p class="p-summary post-card__excerpt">The rest of the post continues after the image. This fixture tests an image that occurs well inside the card's 240-character excerpt window.</p>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-07-19">Jul 19, 2026</time>
+                <span class="p-category post-card__category">Image early</span>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+
+        <li class="h-entry post-card">
+          <a class="u-url post-card__link" href="#post-image-last">
+            <article class="post-card__body">
+              <h2 class="p-name post-card__title">Hiding Poems Inside Images</h2>
+              <p class="p-summary post-card__excerpt">I built a tool that hides poems inside images. Not as metadata, not as a watermark. The actual text of the poem drives the visual pattern, and you can reconstruct the poem perfectly from the image alone. This fixture represents a long post whose image appears near the end.</p>
+              <figure class="post-card__media">
+                <img src="https://cdn.uploads.micro.blog/70990/2026/tempest-square.png" width="500" height="500" alt="A central square surrounded by radiating lines with red points">
+              </figure>
+              <footer class="post-card__meta">
+                <time class="dt-published" datetime="2026-04-05">Apr 5, 2026</time>
+                <span class="p-category post-card__category">Image last</span>
+                <span class="post-card__read">Read post <span aria-hidden="true">→</span></span>
+              </footer>
+            </article>
+          </a>
+        </li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <p>Rendered locally for layout review.</p>
+    </footer>
+  </div>
+</body>
+</html>
