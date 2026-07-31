@@ -1,0 +1,49 @@
+baseURL = "https://example.test/"
+title = "Interlou Fixture"
+languageCode = "en-US"
+paginate = 2
+
+[author]
+  name = "Fixture Author"
+  username = "fixture"
+  avatar = "https://example.test/avatar.png"
+
+[params]
+  author = "Fixture Author"
+  description = "Representative Micro.blog content for Interlou compatibility tests."
+  footer = "Fixture footer"
+  include_conversation = true
+
+[permalinks]
+  posts = "/:year/:month/:day/:slug/"
+
+[taxonomies]
+  category = "categories"
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 1
+
+[[menu.main]]
+  name = "Archive"
+  url = "/archive/"
+  weight = 2
+
+[[menu.main]]
+  name = "Replies"
+  url = "/replies/"
+  weight = 3
+
+[[menu.main]]
+  name = "Links"
+  url = "/links/"
+  weight = 4

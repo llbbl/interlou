@@ -14,11 +14,11 @@ The **Most used** group takes the first five entries from `Site.Taxonomies.categ
 
 Each category link includes its total post count. The complete directory is one click away through **Browse all categories**.
 
-Micro.blog's base `theme-blank` includes a top-level `layouts/list.archivehtml.html`. Interlou provides its own template at the same path because the top-level template takes precedence over the `_default` fallback. Both Interlou archive template paths delegate to `layouts/partials/archive.html` so their output stays consistent.
+Micro.blog's Archive output can select the compatibility template at `layouts/list.archivehtml.html`. Hugo 0.158 can also resolve the route-specific `layouts/archive/all.html`. Both delegate to `layouts/_partials/archive.html`, keeping the output identical regardless of which Micro.blog route context is supplied.
 
 ## Categories directory
 
-`layouts/categories/terms.html` renders every category alphabetically with a post count. `layouts/taxonomy/category.html` remains responsible for showing posts within one category.
+`layouts/categories/taxonomy.html` renders every category alphabetically with a post count. `layouts/categories/term.html` shows posts within one category using Hugo 0.158's path-aware taxonomy lookup.
 
 The complete directory is present in the original HTML. This keeps category navigation functional when JavaScript is disabled or fails to load.
 

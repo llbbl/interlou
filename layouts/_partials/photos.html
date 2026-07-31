@@ -1,4 +1,3 @@
-{{ define "main" }}
 <div class="photos-grid">
   {{ $posts := where .Site.RegularPages "Type" "post" }}
   {{ range $index, $post := $posts }}
@@ -25,5 +24,4 @@
       </div>
     </div>
   {{ end }}
-{{ end }}
 {{ end }}
