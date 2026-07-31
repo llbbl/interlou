@@ -718,6 +718,12 @@
     padding: 110px 0 120px 0;
   }
 
+  @media screen and (min-width: 801px) {
+    .page-content--single {
+      padding-top: 64px;
+    }
+  }
+
   .page-content ul {
     @apply mb-0;
   }

@@ -39,7 +39,7 @@
       {{ partial "navigation.html" . }}
     </header>
 
-    <main class="page-content">
+    <main class="page-content{{ if and .IsPage (eq .Type "post") }} page-content--single{{ end }}">
       {{ block "main" . }}{{ end }}
     </main>
 

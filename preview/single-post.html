@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interlou single-post preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&amp;family=Rubik:wght@400;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site-header">
+      <div class="site-branding">
+        <a href="/" class="site-image-link" aria-label="Preview index">
+          <span class="site-image" style="display:block;width:5rem;height:5rem;border-radius:9999px;background:linear-gradient(135deg,#d946ef,#072d3b);"></span>
+        </a>
+        <h1><a class="site-title" href="/">LLBBL Blog</a></h1>
+      </div>
+
+      <nav class="navigation">
+        <div class="nav-links">
+          <a class="page-link" href="#about">About</a>
+          <a class="page-link" href="#archive">Archive</a>
+          <a class="page-link" href="#replies">Replies</a>
+          <a class="page-link" href="#links">Links</a>
+        </div>
+
+        <div class="nav-orb-wrapper">
+          <button class="nav-orb-toggle" aria-expanded="false" aria-controls="preview-nav-orb-panel" aria-label="More navigation links">
+            <span class="nav-orb-icon">+</span>
+          </button>
+          <div class="nav-orb-panel" id="preview-nav-orb-panel" role="menu" aria-hidden="true">
+            <a class="nav-orb-link" href="#categories" role="menuitem">Categories</a>
+            <a class="nav-orb-link" href="#photos" role="menuitem">Photos</a>
+            <a class="nav-orb-link" href="#subscribe" role="menuitem">Subscribe</a>
+            <a class="nav-orb-link" href="#rss" role="menuitem">RSS</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-content page-content--single">
+      <article class="h-entry post">
+        <h1><a class="u-url p-name" href="#post">If I Worked at Apple Again, I'd Build iApps</a></h1>
+        <div class="e-content">
+          <p>I worked as a contractor at Apple more than a decade ago. The specific work doesn't matter, but if I walked back through the doors today, I know what I'd pitch.</p>
+          <p>Call them <strong>iApps</strong>, just as a thought experiment.</p>
+          <p>This representative content makes it easy to review the title-to-navigation spacing at the same proportions as a real post.</p>
+        </div>
+        <p class="date"><a class="u-url" href="#post"><time class="dt-published" datetime="2026-07-31">Jul 31, 2026</time></a></p>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      var toggle = document.querySelector('.nav-orb-toggle');
+      var panel = document.getElementById('preview-nav-orb-panel');
+      var wrapper = document.querySelector('.nav-orb-wrapper');
+      if (!toggle || !panel || !wrapper) return;
+
+      function setOpen(isOpen) {
+        wrapper.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        panel.setAttribute('aria-hidden', String(!isOpen));
+      }
+
+      toggle.addEventListener('click', function() {
+        setOpen(!wrapper.classList.contains('is-open'));
+      });
+
+      if (new URLSearchParams(window.location.search).get('menu') === 'open') {
+        setOpen(true);
+      }
+    })();
+  </script>
+</body>
+</html>
