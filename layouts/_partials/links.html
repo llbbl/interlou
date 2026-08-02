@@ -1,4 +1,3 @@
-{{ define "main" }}
 <h3>Logan Links</h3>
 
 <ul class="post-list">
@@ -20,4 +19,8 @@
 </ul>
 
 {{ partial "pagination.html" . }}
+
+{{ if .Site.Params.include_conversation }}
+<div id="conversation" class="microblog_conversation"></div>
+<script src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
 {{ end }}

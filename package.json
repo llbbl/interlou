@@ -10,11 +10,12 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --watch",
+    "dev": "tailwindcss -i src/styles.css -o static/css/styles.css --watch",
     "preview": "bun run ./scripts/preview-server.ts",
-    "build": "npx @tailwindcss/cli -i src/styles.css -o static/css/styles.css --minify",
+    "build": "tailwindcss -i src/styles.css -o static/css/styles.css --minify",
     "gen:fallback": "node scripts/gen-font-fallback.mjs",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:hugo": "bun run ./scripts/test-hugo.ts"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",

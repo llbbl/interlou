@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.Language.Locale | default "en" }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,9 +14,9 @@
   <!-- Highlight.js for syntax highlighting -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-dark.min.css">
 
-  <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Author.username }}/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Params.author.username }}/favicon.png" type="image/x-icon">
   
-  {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ with .Site.Params.author.name }}<meta name="author" content="{{ . }}">{{ end }}
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
   
   <link rel="canonical" href="{{ .Permalink }}">
@@ -24,14 +24,14 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
   
-  {{ template "_internal/opengraph.html" . }}
-  {{ template "_internal/twitter_cards.html" . }}
+  {{ partial "opengraph.html" . }}
+  {{ partial "twitter_cards.html" . }}
 </head>
 <body>
   <div class="wrapper">
     <header class="site-header">
       <div class="site-branding">
-        {{ with .Site.Author.avatar }}
+        {{ with .Site.Params.author.avatar }}
           <a href="/" class="site-image-link"><img src="{{ . }}" class="site-image" alt="{{ $.Site.Title }}" loading="lazy"></a>
         {{ end }}
         <h1><a class="site-title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>
@@ -50,7 +50,7 @@
     </footer>
   </div>
 
-  {{ template "_internal/google_analytics.html" . }}
+  {{ partial "google_analytics.html" . }}
 
   <!-- Highlight.js (includes 40+ common languages: js, ts, python, go, php, rust, bash, etc.) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>

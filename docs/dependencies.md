@@ -2,7 +2,7 @@
 
 ## Runtime CDN assets
 
-These assets are loaded from `layouts/_default/baseof.html`:
+These assets are loaded from `layouts/baseof.html`:
 
 | Dependency | Current value | Purpose |
 |---|---|---|
@@ -21,7 +21,7 @@ These assets are loaded from `layouts/_default/baseof.html`:
 ## Updating Highlight.js
 
 1. Check the latest release notes at <https://github.com/highlightjs/highlight.js/releases>.
-2. Update both Highlight.js URLs in `layouts/_default/baseof.html` so the CSS and JS versions stay aligned.
+2. Update both Highlight.js URLs in `layouts/baseof.html` so the CSS and JS versions stay aligned.
 3. Rebuild and verify that code blocks still match the theme visually.
 
 The current URL pattern is:
@@ -33,7 +33,7 @@ https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js
 
 ## Updating fonts
 
-1. Change the Google Fonts request in `layouts/_default/baseof.html`.
+1. Change the Google Fonts request in `layouts/baseof.html`.
 2. Update the font stacks in `src/styles.css` if the family names change.
 3. Run `pnpm gen:fallback` if the metrics or weights change.
 4. Run `pnpm build`.

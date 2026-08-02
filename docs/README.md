@@ -5,6 +5,7 @@ Interlou is a personal Micro.blog theme shared publicly as a reference. The top-
 ## Guides
 
 - [Development workflow](development.md): setup, commands, generated CSS conventions, and the manual Micro.blog sync step.
+- [Hugo 0.158 compatibility](hugo-0.158.md): pinned-version fixture checks, migrated template structure, Micro.blog validation, rollout, and rollback.
 - [Customization](customization.md): color tokens, font setup, and where theme-level changes live.
 - [Homepage cards](homepage-cards.md): how card preview text is derived, truncated, and rendered.
 - [Archive and category discovery](category-discovery.md): popular/recent Archive categories, the complete directory, and progressive filtering.
