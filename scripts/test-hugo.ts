@@ -1,4 +1,4 @@
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -11,6 +11,18 @@ type RouteCheck = {
 
 const root = resolve(import.meta.dir, "..");
 const fixture = join(root, "testdata", "hugo-site");
+const blankThemeFixture = join(root, "testdata", "microblog-theme-blank");
+const themeName = "interlou";
+const themeOverlayEntries = [
+  "archetypes",
+  "assets",
+  "data",
+  "i18n",
+  "layouts",
+  "static",
+  "theme.toml",
+  "plugin.json",
+];
 
 function argument(name: string, fallback?: string): string {
   const index = process.argv.indexOf(name);
@@ -24,6 +36,67 @@ function argument(name: string, fallback?: string): string {
 function isAtLeastVersion(version: string, major: number, minor: number): boolean {
   const [actualMajor = 0, actualMinor = 0] = version.split(".").map(Number);
   return actualMajor > major || (actualMajor === major && actualMinor >= minor);
+}
+
+function copyIfPresent(source: string, destination: string): void {
+  if (!existsSync(source)) return;
+  cpSync(source, destination, { recursive: true, force: true });
+}
+
+function createMergedMicroBlogTheme(destination: string): void {
+  cpSync(blankThemeFixture, destination, { recursive: true });
+
+  for (const entry of themeOverlayEntries) {
+    copyIfPresent(join(root, entry), join(destination, entry));
+  }
+}
+
+function assertBaseofCopiesMatch(): void {
+  const modernBaseof = join(root, "layouts", "baseof.html");
+  const legacyBaseof = join(root, "layouts", "_default", "baseof.html");
+
+  if (!existsSync(legacyBaseof)) {
+    throw new Error(
+      "Missing layouts/_default/baseof.html. It must stay byte-for-byte identical to layouts/baseof.html for Micro.blog Hugo 0.158 compatibility.",
+    );
+  }
+
+  const modernContent = readFileSync(modernBaseof);
+  const legacyContent = readFileSync(legacyBaseof);
+
+  if (!modernContent.equals(legacyContent)) {
+    throw new Error(
+      "layouts/baseof.html and layouts/_default/baseof.html must be byte-for-byte identical for Micro.blog Hugo 0.158 compatibility. Update both copies together.",
+    );
+  }
+}
+
+function assertIndexUsesInterlouBase(publicDir: string): void {
+  const outputPath = join(publicDir, "index.html");
+  const output = readFileSync(outputPath, "utf8");
+
+  const requiredMarkers = [
+    `class="wrapper"`,
+    `class="site-header"`,
+    `class="page-content"`,
+  ];
+
+  for (const marker of requiredMarkers) {
+    if (!output.includes(marker)) {
+      throw new Error(`index.html is missing Interlou base wrapper marker: ${marker}`);
+    }
+  }
+
+  if (!/<link rel="stylesheet" href="\/css\/styles\.css\?v=\d+">/.test(output)) {
+    throw new Error("index.html is missing Interlou stylesheet link: /css/styles.css?v=<timestamp>");
+  }
+
+  const blankMarkers = [`data-microblog-blank-baseof`, `microblog-blank-wrapper`];
+  for (const marker of blankMarkers) {
+    if (output.includes(marker)) {
+      throw new Error(`index.html unexpectedly used Micro.blog Blank base wrapper marker: ${marker}`);
+    }
+  }
 }
 
 const hugoArgument = argument("--hugo", process.env.HUGO_BIN ?? "hugo");
@@ -117,9 +190,10 @@ const routeChecks: RouteCheck[] = [
 ];
 
 try {
+  assertBaseofCopiesMatch();
   cpSync(fixture, site, { recursive: true });
   mkdirSync(themes, { recursive: true });
-  symlinkSync(root, join(themes, "interlou"), process.platform === "win32" ? "junction" : "dir");
+  createMergedMicroBlogTheme(join(themes, themeName));
 
   const targetIsModern = isAtLeastVersion(expectedVersion, 0, 146);
   const buildArgs = [
@@ -128,7 +202,7 @@ try {
     "--themesDir",
     themes,
     "--theme",
-    "interlou",
+    themeName,
     "--config",
     config,
     "--destination",
@@ -179,6 +253,8 @@ try {
       }
     }
   }
+
+  assertIndexUsesInterlouBase(publicDir);
 
   console.log(`Hugo ${expectedVersion} fixture passed (${routeChecks.length} routes).`);
   console.log(`Binary: ${basename(hugoBin)} (${dirname(hugoBin)})`);

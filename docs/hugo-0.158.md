@@ -41,6 +41,7 @@ The standalone fixture does not reproduce Micro.blog's generated front matter, o
 
 ## Micro.blog-specific compatibility notes
 
+- Micro.blog merges its Blank defaults into every site before applying the selected theme. Blank still provides `layouts/_default/baseof.html`, and that site-level legacy path takes precedence over a theme's modern `layouts/baseof.html` under Hugo 0.158. Interlou therefore ships identical base templates at both paths. `layouts/baseof.html` is the canonical Hugo 0.158 location; `layouts/_default/baseof.html` is a required Micro.blog compatibility copy and must stay byte-for-byte identical.
 - Micro.blog supplies `/links/` as a regular page, not a Hugo section. Hugo 0.158 does not support `.Paginate` in that page context, so Interlou renders all posts in the `links` category directly. The local fixture intentionally uses `content/links.md` to match production.
 - Installed plug-ins run in the same Hugo build and must also support Hugo 0.158. Search Space versions that still reference `.Site.Author.username` will stop the build. Its upstream compatibility fix is commit [`373318b`](https://github.com/svendahlstrand/plugin-search-space/commit/373318b6deafcafe7d892bf42a60d1d0b9efa1ce), which uses `.Site.Params.author.username`. If the build log still shows the old expression, update or reinstall Search Space before rebuilding.
 
