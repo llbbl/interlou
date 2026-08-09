@@ -10,15 +10,12 @@
       {{ $linkPosts = $linkPosts | append . }}
     {{ end }}
   {{ end }}
-  {{ $paginator := .Paginate $linkPosts }}
-  {{ range $paginator.Pages }}
+  {{ range $linkPosts }}
   <li class="h-entry">
     {{ partial "post.html" . }}
   </li>
   {{ end }}
 </ul>
-
-{{ partial "pagination.html" . }}
 
 {{ if .Site.Params.include_conversation }}
 <div id="conversation" class="microblog_conversation"></div>

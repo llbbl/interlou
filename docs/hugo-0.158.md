@@ -39,6 +39,11 @@ The generated-output check covers:
 
 The standalone fixture does not reproduce Micro.blog's generated front matter, optimized segmented rendering, dashboard settings, or installed plug-ins. A Micro.blog test blog is therefore a release gate, not an optional visual check.
 
+## Micro.blog-specific compatibility notes
+
+- Micro.blog supplies `/links/` as a regular page, not a Hugo section. Hugo 0.158 does not support `.Paginate` in that page context, so Interlou renders all posts in the `links` category directly. The local fixture intentionally uses `content/links.md` to match production.
+- Installed plug-ins run in the same Hugo build and must also support Hugo 0.158. Search Space versions that still reference `.Site.Author.username` will stop the build. Its upstream compatibility fix is commit [`373318b`](https://github.com/svendahlstrand/plugin-search-space/commit/373318b6deafcafe7d892bf42a60d1d0b9efa1ce), which uses `.Site.Params.author.username`. If the build log still shows the old expression, update or reinstall Search Space before rebuilding.
+
 ## Micro.blog test-blog gate
 
 Before changing llbbl.blog:
