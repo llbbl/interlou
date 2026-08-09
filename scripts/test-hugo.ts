@@ -71,6 +71,21 @@ function assertBaseofCopiesMatch(): void {
   }
 }
 
+function assertLinksPageUsesGenericPageTemplate(): void {
+  const pathSpecificTemplates = [
+    "layouts/links/all.html",
+    "layouts/_partials/links.html",
+  ];
+
+  for (const templatePath of pathSpecificTemplates) {
+    if (existsSync(join(root, templatePath))) {
+      throw new Error(
+        `${templatePath} must not exist. Micro.blog serves /links/ as a standalone page, so it must render through the generic page template instead of a path-specific links template.`,
+      );
+    }
+  }
+}
+
 function assertIndexUsesInterlouBase(publicDir: string): void {
   const outputPath = join(publicDir, "index.html");
   const output = readFileSync(outputPath, "utf8");
@@ -169,7 +184,8 @@ const routeChecks: RouteCheck[] = [
   },
   {
     path: "links/index.html",
-    includes: ["Logan Links", "Link roundup"],
+    includes: ["links-header", "Bookmarks and interesting finds from around the web.", "link-cards"],
+    excludes: ["Logan Links", "Link roundup"],
   },
   {
     path: "replies/index.html",
@@ -191,6 +207,7 @@ const routeChecks: RouteCheck[] = [
 
 try {
   assertBaseofCopiesMatch();
+  assertLinksPageUsesGenericPageTemplate();
   cpSync(fixture, site, { recursive: true });
   mkdirSync(themes, { recursive: true });
   createMergedMicroBlogTheme(join(themes, themeName));
