@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+</head>
+<body data-microblog-blank-baseof="true">
+  <main class="microblog-blank-wrapper">
+    {{ block "main" . }}{{ end }}
+  </main>
+</body>
+</html>
