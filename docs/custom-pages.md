@@ -4,7 +4,7 @@ Interlou includes a small number of route-specific templates for llbbl.blog.
 
 ## Current templates
 
-- `/links/`: path-aware template in [`layouts/links/all.html`](../layouts/links/all.html) with shared rendering in [`layouts/_partials/links.html`](../layouts/_partials/links.html)
+- `/links/`: standalone Micro.blog page rendered through the shared [`layouts/page.html`](../layouts/page.html) template; its editable link-card content is managed by Micro.blog, not generated from posts in this theme
 - `/replies/`: section template in [`layouts/replies/section.html`](../layouts/replies/section.html)
 - `/photos/`: path-aware template in [`layouts/photos/all.html`](../layouts/photos/all.html), with Micro.blog compatibility fallback in [`layouts/list.photoshtml.html`](../layouts/list.photoshtml.html)
 - `/archive/`: path-aware template in [`layouts/archive/all.html`](../layouts/archive/all.html), with Micro.blog compatibility fallback in [`layouts/list.archivehtml.html`](../layouts/list.archivehtml.html)
