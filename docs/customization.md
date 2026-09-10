@@ -26,11 +26,11 @@ Interlou currently uses:
 - `Rubik` for body text
 - `Roboto Mono` for dates, navigation, and mono accents
 
-The Google Fonts request lives in `layouts/baseof.html`, and the font stacks live in `src/styles.css` through `--font-sans` and `--font-mono`.
+The Google Fonts request lives in the base template, and the font stacks live in `src/styles.css` through `--font-sans` and `--font-mono`. Interlou ships two byte-for-byte identical base templates — `layouts/baseof.html` and the Micro.blog compatibility copy `layouts/_default/baseof.html` — so template edits must be applied to both. See [Hugo 0.158 compatibility](hugo-0.158.md).
 
 If you change the families or weights:
 
-1. Update the Google Fonts URL in `layouts/baseof.html`.
+1. Update the Google Fonts URL in both base template copies.
 2. Update the stacks in `src/styles.css`.
 3. Run `pnpm gen:fallback`.
 4. Run `pnpm build`.
