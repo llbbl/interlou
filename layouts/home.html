@@ -1,11 +1,17 @@
 {{ define "main" }}
 <ul class="post-card-grid">
   {{ $posts := where .Site.RegularPages "Type" "post" }}
-  {{/* Exclude posts with "links" category from main feed */}}
+  {{/* Links and movie reviews have dedicated collection pages. */}}
   {{ $filtered := slice }}
   {{ range $posts }}
     {{ $cats := .Params.categories | default slice }}
-    {{ if not (in $cats "links") }}
+    {{ $collectionPost := false }}
+    {{ range $cats }}
+      {{ if in (slice "links" "movies") (lower .) }}
+        {{ $collectionPost = true }}
+      {{ end }}
+    {{ end }}
+    {{ if not $collectionPost }}
       {{ $filtered = $filtered | append . }}
     {{ end }}
   {{ end }}

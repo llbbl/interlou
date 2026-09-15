@@ -1,0 +1,71 @@
+{{ define "main" }}
+<section class="movie-library" aria-labelledby="movies-heading">
+  <header class="movie-library__header">
+    <h1 id="movies-heading">{{ .Title }}</h1>
+    <p>Short reviews, presented in the order they were published.</p>
+  </header>
+
+  <ul class="movie-card-grid">
+    {{ $paginator := .Paginate .Pages }}
+    {{ range $paginator.Pages }}
+      {{ $rawTitle := .Title | default "Untitled movie review" }}
+      {{ $yearMatch := findRE `\([0-9]{4}\)\s*$` $rawTitle 1 }}
+      {{ $displayTitle := replaceRE `\s*\([0-9]{4}\)\s*$` "" $rawTitle }}
+      {{ $year := "" }}
+      {{ with index $yearMatch 0 }}
+        {{ $year = replaceRE `[()]` "" . }}
+      {{ end }}
+
+      {{/* Micro.blog renders the standard Micropub photo in post content. */}}
+      {{ $imageMatch := findRE `<img[^>]+src="([^"]+)"` .Content 1 }}
+      {{ $posterSrc := "" }}
+      {{ with index $imageMatch 0 }}
+        {{ $posterSrc = replaceRE `.*src="([^"]+)".*` "$1" . }}
+      {{ end }}
+
+      {{/* Movie publishing preserves rank and source links in this aside. */}}
+      {{ $rankMatch := findRE `data-flickchart-rank="[0-9]+"` .Content 1 }}
+      {{ $rank := "" }}
+      {{ with index $rankMatch 0 }}
+        {{ $rank = replaceRE `[^0-9]` "" . }}
+      {{ end }}
+      {{ $linksMatch := findRE `(?s)<aside[^>]*class="movie-review-links"[^>]*>.*?</aside>` .Content 1 }}
+
+      <li class="h-entry movie-card">
+        <article class="movie-card__body">
+          <a class="u-url movie-card__poster-link" href="{{ .Permalink }}" aria-label="Read the review of {{ $displayTitle }}">
+            {{ if $posterSrc }}
+              <img class="movie-card__poster" src="{{ $posterSrc }}" alt="Poster for {{ $displayTitle }}" loading="lazy">
+            {{ else }}
+              <span class="movie-card__poster-placeholder" role="img" aria-label="Poster unavailable for {{ $displayTitle }}">
+                <span aria-hidden="true">Poster unavailable</span>
+              </span>
+            {{ end }}
+          </a>
+
+          <div class="movie-card__details">
+            <h2 class="p-name movie-card__title"><a href="{{ .Permalink }}">{{ $displayTitle }}</a></h2>
+            <p class="movie-card__metadata">
+              {{ if $year }}
+                <span class="movie-card__year">{{ $year }}</span>
+              {{ else }}
+                <span class="movie-card__year movie-card__year--missing">Year unavailable</span>
+              {{ end }}
+              {{ if $rank }}
+                <span class="movie-card__rank">Flickchart rank #{{ $rank }}</span>
+              {{ end }}
+            </p>
+            {{ with index $linksMatch 0 }}
+              <div class="movie-card__sources" aria-label="Movie pages">
+                {{ . | safeHTML }}
+              </div>
+            {{ end }}
+          </div>
+        </article>
+      </li>
+    {{ end }}
+  </ul>
+
+  {{ partial "pagination.html" . }}
+</section>
+{{ end }}
