@@ -823,6 +823,139 @@
     }
   }
 
+  /* Movie category poster cards */
+  .movie-library__header {
+    margin-bottom: 40px;
+  }
+
+  .movie-library__header h1 {
+    @apply mb-3;
+  }
+
+  .movie-library__header p {
+    @apply text-text-alt mb-0;
+    max-width: 42rem;
+    line-height: 1.65;
+  }
+
+  .movie-card-grid {
+    @apply grid list-none ml-0;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 28px;
+  }
+
+  .movie-card {
+    @apply m-0 min-w-0;
+  }
+
+  .movie-card__body {
+    @apply flex flex-col h-full overflow-hidden rounded-2xl;
+    background: rgba(55, 21, 84, 0.58);
+    border: 1px solid rgba(205, 160, 244, 0.22);
+    box-shadow: 0 12px 32px rgba(7, 45, 59, 0.22);
+    transition: transform 0.2s ease, border-color 0.2s ease,
+      background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .movie-card:hover .movie-card__body,
+  .movie-card:focus-within .movie-card__body {
+    transform: translateY(-4px);
+    background: rgba(69, 29, 103, 0.76);
+    border-color: rgba(217, 70, 239, 0.7);
+    box-shadow: 0 18px 42px rgba(7, 45, 59, 0.32),
+      0 0 24px rgba(217, 70, 239, 0.12);
+  }
+
+  .movie-card__poster-link {
+    @apply block overflow-hidden no-underline;
+    aspect-ratio: 2 / 3;
+    background: rgba(7, 45, 59, 0.68);
+  }
+
+  .movie-card__poster-link:focus-visible {
+    outline-offset: -4px;
+  }
+
+  .movie-card__poster,
+  .movie-card__poster-placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  .movie-card__poster {
+    object-fit: cover;
+  }
+
+  .movie-card__poster-placeholder {
+    @apply flex items-center justify-center text-center font-mono text-sm uppercase font-bold tracking-wide;
+    padding: 24px;
+    color: var(--text-alt);
+    background:
+      linear-gradient(145deg, rgba(69, 29, 103, 0.8), rgba(7, 45, 59, 0.8));
+  }
+
+  .movie-card__details {
+    @apply flex flex-col flex-1;
+    padding: 22px;
+  }
+
+  .movie-card__title {
+    @apply text-2xl mt-0 mb-2;
+    line-height: 1.25;
+  }
+
+  .movie-card__title a {
+    @apply no-underline;
+  }
+
+  .movie-card__metadata {
+    @apply flex flex-wrap gap-x-3 gap-y-1 mb-5 font-mono text-xs uppercase font-bold tracking-wide;
+    color: rgba(238, 238, 238, 0.58);
+  }
+
+  .movie-card__rank {
+    color: var(--text-alt);
+  }
+
+  .movie-card__year--missing {
+    font-style: italic;
+  }
+
+  .movie-card__sources {
+    margin-top: auto;
+  }
+
+  .movie-review-links {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .movie-review-link {
+    @apply inline-flex items-center rounded-full no-underline font-mono text-xs uppercase font-bold tracking-wide;
+    min-height: 36px;
+    padding: 6px 11px;
+    color: var(--text-alt);
+    background: rgba(217, 70, 239, 0.12);
+    border: 1px solid rgba(217, 70, 239, 0.25);
+  }
+
+  .movie-review-link:hover,
+  .movie-review-link:focus-visible {
+    color: var(--text);
+    background: rgba(217, 70, 239, 0.45);
+    border-color: var(--accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .movie-card__body {
+      transition: none;
+    }
+
+    .movie-card:hover .movie-card__body,
+    .movie-card:focus-within .movie-card__body {
+      transform: none;
+    }
+  }
+
   li.h-entry:last-of-type {
     @apply mb-0;
   }
@@ -1506,6 +1639,27 @@
     flex-basis: 100%;
     margin-left: 0;
     margin-top: 8px;
+  }
+
+  .movie-library__header {
+    margin-bottom: 28px;
+  }
+
+  .movie-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 18px;
+  }
+
+  .movie-card__details {
+    padding: 18px;
+  }
+
+  .movie-card__title {
+    @apply text-xl;
+  }
+
+  .movie-review-link {
+    min-height: 44px;
   }
 
   /* Archive and category discovery mobile */

@@ -9,6 +9,13 @@ type RouteCheck = {
   excludes?: string[];
 };
 
+type MovieCardCheck = {
+  path: string;
+  permalink: string;
+  includes: string[];
+  excludes?: string[];
+};
+
 const root = resolve(import.meta.dir, "..");
 const fixture = join(root, "testdata", "hugo-site");
 const blankThemeFixture = join(root, "testdata", "microblog-theme-blank");
@@ -143,7 +150,7 @@ const routeChecks: RouteCheck[] = [
   {
     path: "index.html",
     includes: ["post-card-grid", "Titled fixture post", "A very short note."],
-    excludes: ["Link roundup", "END-OF-LONG-POST"],
+    excludes: ["Link roundup", "END-OF-LONG-POST", "Moon", "Super Size Me", "Mystery Feature"],
   },
   {
     path: "page/2/index.html",
@@ -168,7 +175,7 @@ const routeChecks: RouteCheck[] = [
   },
   {
     path: "archive/index.html",
-    includes: ["category-summary", "Browse all categories", "archive-feed"],
+    includes: ["category-summary", "Browse all categories", "archive-feed", "Moon (2009)", "Super Size Me (2004)", "Mystery Feature"],
   },
   {
     path: "categories/index.html",
@@ -177,6 +184,7 @@ const routeChecks: RouteCheck[] = [
   {
     path: "categories/development/index.html",
     includes: ["Development", "post-list", "Titled fixture post"],
+    excludes: ["movie-card-grid", "Moon (2009)"],
   },
   {
     path: "categories/writing-/index.html",
@@ -186,6 +194,21 @@ const routeChecks: RouteCheck[] = [
     path: "links/index.html",
     includes: ["links-header", "Bookmarks and interesting finds from around the web.", "link-cards"],
     excludes: ["Logan Links", "Link roundup"],
+  },
+  {
+    path: "posts/index.html",
+    includes: ["post-list", "Titled fixture post", "A very short note."],
+    excludes: ["Link roundup", "Moon (2009)", "Super Size Me (2004)", "Mystery Feature"],
+  },
+  {
+    path: "categories/movies/index.html",
+    includes: ["movie-library", "movie-card-grid", "Moon", "Super Size Me", "Flickchart rank #42", "Flickchart rank #173", "Poster unavailable", "Older"],
+    excludes: ["Mystery Feature", "Year unavailable"],
+  },
+  {
+    path: "categories/movies/page/2/index.html",
+    includes: ["movie-library", "movie-card-grid", "Mystery Feature", "Year unavailable", "Newer"],
+    excludes: ["Moon", "Super Size Me", "Flickchart rank #"],
   },
   {
     path: "replies/index.html",
@@ -201,9 +224,53 @@ const routeChecks: RouteCheck[] = [
   },
   {
     path: "css/styles.css",
-    includes: [".post-card-grid", ".category-directory"],
+    includes: [".post-card-grid", ".category-directory", ".movie-card-grid", ".movie-card__poster"],
   },
 ];
+
+const movieCardChecks: MovieCardCheck[] = [
+  {
+    path: "categories/movies/index.html",
+    permalink: "https://example.test/2026/07/09/movie-complete/",
+    includes: [
+      "moon-poster.jpg",
+      "alt=\"Poster for Moon\"",
+      "Flickchart rank #42",
+      "https://letterboxd.com/film/moon/",
+      "https://www.themoviedb.org/movie/17431",
+      "https://www.flickchart.com/movie/moon-2009",
+    ],
+    excludes: ["Poster unavailable", "Year unavailable"],
+  },
+  {
+    path: "categories/movies/index.html",
+    permalink: "https://example.test/2026/07/08/movie-missing-poster/",
+    includes: [
+      "Poster unavailable for Super Size Me",
+      "Flickchart rank #173",
+      "https://letterboxd.com/film/super-size-me/",
+    ],
+    excludes: ["<img", "movie-review-link--tmdb", "movie-review-link--flickchart"],
+  },
+  {
+    path: "categories/movies/page/2/index.html",
+    permalink: "https://example.test/2026/07/07/movie-missing-year/",
+    includes: [
+      "mystery-feature-poster.jpg",
+      "alt=\"Poster for Mystery Feature\"",
+      "Year unavailable",
+      "https://www.themoviedb.org/movie/999999",
+    ],
+    excludes: ["Flickchart rank #", "movie-review-link--letterboxd", "movie-review-link--flickchart"],
+  },
+];
+
+function movieCardMarkup(output: string, permalink: string): string {
+  const cards = output.match(/<li class="h-entry movie-card">[\s\S]*?<\/li>/g) ?? [];
+  const card = cards.find((candidate) => candidate.includes(`href="${permalink}"`));
+  if (!card) throw new Error(`Unable to find movie card for ${permalink}`);
+  return card;
+}
 
 try {
   assertBaseofCopiesMatch();
@@ -267,6 +334,21 @@ try {
     for (const marker of check.excludes ?? []) {
       if (output.includes(marker)) {
         throw new Error(`${check.path} unexpectedly includes marker: ${marker}`);
+      }
+    }
+  }
+
+  for (const check of movieCardChecks) {
+    const output = readFileSync(join(publicDir, check.path), "utf8");
+    const card = movieCardMarkup(output, check.permalink);
+    for (const marker of check.includes) {
+      if (!card.includes(marker)) {
+        throw new Error(`${check.path} card ${check.permalink} is missing marker: ${marker}`);
+      }
+    }
+    for (const marker of check.excludes ?? []) {
+      if (card.includes(marker)) {
+        throw new Error(`${check.path} card ${check.permalink} unexpectedly includes marker: ${marker}`);
       }
     }
   }
