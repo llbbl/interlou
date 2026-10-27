@@ -15,7 +15,7 @@ The two base templates must stay byte-for-byte identical, so every template edit
 
 `package.json` currently pins:
 
-- `pnpm@11.1.3` as the package manager
+- `pnpm@12.15.0` as the package manager
 - Node.js `>=22`
 - `@tailwindcss/cli` and `tailwindcss` for CSS builds
 - `fontaine` for generated fallback font metrics
