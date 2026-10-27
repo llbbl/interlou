@@ -12,7 +12,7 @@ https://github.com/llbbl/interlou
 
 ## Local development
 
-Interlou targets Hugo 0.158 on Micro.blog, uses Tailwind CSS v4, and requires Node.js 22+ with `pnpm@11.1.3` for local tooling.
+Interlou targets Hugo 0.158 on Micro.blog, uses Tailwind CSS v4, and requires Node.js 22+ with `pnpm@12.15.0` for local tooling.
 
 ```bash
 pnpm install

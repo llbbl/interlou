@@ -5,7 +5,7 @@ Interlou is a Micro.blog theme built from Hugo-style templates plus Tailwind CSS
 ## Requirements
 
 - Node.js 22 or newer
-- `pnpm@11.1.3`
+- `pnpm@12.15.0`
 - [Bun](https://bun.sh/) for the local layout preview server
 - Hugo 0.158.0 for rendered-template compatibility checks
 
