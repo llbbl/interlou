@@ -21,6 +21,6 @@
     "@tailwindcss/cli": "^4.1.18",
     "fontaine": "^0.8.0",
     "tailwindcss": "^4.1.18",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   }
 }
